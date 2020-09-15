@@ -1,0 +1,12 @@
+article.hero {
+    display: grid;
+    grid-template-columns: 75% 1fr;
+
+    h2.title {
+        font-size: 2rem;
+        font-weight: 300;
+        span {
+            font-weight: bold;
+        }
+    }
+}

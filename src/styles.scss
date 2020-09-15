@@ -10,9 +10,76 @@
   font-family: 'Titillium Web', system-ui;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  // color: #131313;
 }
 
+:root {
+  --br: 5px;
+  --dark-font: #131313;
+  --highlight: #00F9B6;
+  --filler: #0A1D1C;
+  --border: #1F5E5B;
+}
+
+body {
+  background-color: #131313;
+}
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6, 
+p, 
+a,
+span, 
+button, 
+details, 
+summary,
+label {
+    color: #fff;
+}
 
 ul {
   list-style: none;
+}
+
+label, a {
+  user-select: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.cta {
+cursor: pointer;
+ background: #00F9B6;
+ border: none;
+ border-radius: 5px;
+ padding: .25rem 1.25rem;
+ transition: background 180ms ease-in-out;
+ &:hover {
+   background: #00c792;
+ }
+}
+
+button {
+  cursor: pointer;
+  color: #000;
+  span {
+    color: #000;
+  }
+}
+
+input {
+  border: none;
+  padding: .5rem .7rem;
+  border-radius: 2px;
+  color: #000;
+}
+
+app-produkter, app-historik, app-kurv {
+  width: 100%;
 }

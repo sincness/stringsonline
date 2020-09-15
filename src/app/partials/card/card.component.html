@@ -1,0 +1,20 @@
+<article>
+    
+    
+    <figure>
+        <img [src]="image" [alt]="name">
+    </figure>
+
+    <header>
+        <h3>{{ name }}</h3>
+        <p>{{ description }}<a class="readmore" routerLink="/produkter/{{id}}">Læs mere</a></p>
+    </header>
+
+    <section>
+        <label>Pris: DKK {{ price }}</label>
+        <button (click)="addProduct(id)">Læg i kurv</button>
+        <p *ngIf="(stock > 0)">{{ stock }} på lager</p>
+        <p *ngIf="(stock <= 0)">Varen er ikke på lager</p>
+    </section>
+
+</article>

@@ -1,1 +1,24 @@
-<p>kurv works!</p>
+<section class="cart-wrapper" *ngIf="!products">
+    <h2>Indkøbskurven er tom</h2>
+</section>
+<section class="cart-wrapper" *ngIf="products">
+    <article *ngFor="let item of products" [attr.data-id]="item.id">
+        
+        <figure>
+            <img [src]="item.image" [alt]="item.name">
+        </figure>
+        
+        <header>
+            <!-- {{item.id}} -->
+            <h3>{{ item.name }}</h3>
+        </header>
+    
+        <section>
+            <label>Pris: DKK {{ item.price }}</label>
+            <button><span class="material-icons">close</span></button>
+            <p *ngIf="(item.stock > 0)">{{ item.stock }} på lager</p>
+            <p *ngIf="(item.stock <= 0)">Varen er ikke på lager</p>
+        </section>
+        
+    </article>
+</section>

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,12 @@ import { TakComponent } from './pages/tak/tak.component';
 import { NavigationComponent } from './partials/navigation/navigation.component';
 import { KassenComponent } from './pages/kassen/kassen.component';
 import { TermsComponent } from './pages/terms/terms.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AsideComponent } from './partials/aside/aside.component';
+import { ResultComponent } from './pages/result/result.component';
+import { CardComponent } from './partials/card/card.component';
+import { ProdukterComponent } from './pages/produkter/produkter.component';
+import { BrandsComponent } from './pages/brands/brands.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +36,18 @@ import { TermsComponent } from './pages/terms/terms.component';
     NavigationComponent,
     KassenComponent,
     TermsComponent,
+    AsideComponent,
+    ResultComponent,
+    CardComponent,
+    ProdukterComponent,
+    BrandsComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,14 @@
+<h2 *ngIf="!brand">Varen findes ikke</h2>
+<section *ngIf="brand">
+
+    <article>
+        <figure><img [src]="data.image_fullpath" alt="brand.title"></figure>
+        <figcaption>
+            <h2>{{ data.title }}</h2>
+            <p>{{ data.description }}</p>
+        </figcaption>
+    </article>
+
+    <h2>{{ data.title }} produkter</h2>
+    <card *ngFor="let item of brand" [id]="item.id" [description]="item.description_short" [price]="item.price" [stock]="item.stock" [image]="item.image_fullpath" [name]="item.name"></card>
+</section>

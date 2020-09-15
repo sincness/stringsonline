@@ -1,0 +1,5 @@
+<h2 class="heading">Søgeresultat af {{ keyword }}</h2>
+<section>
+
+    <card *ngFor="let item of results" [id]="item.id" [description]="item.description_short" [price]="item.price" [stock]="item.stock" [image]="item.image_fullpath" [name]="item.name"></card>
+</section>

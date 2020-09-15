@@ -1,0 +1,4 @@
+<h2 *ngIf="!products">Varen findes ikke</h2>
+<section *ngIf="products">
+    <card *ngFor="let item of products" [id]="item.id" [description]="item.description_short" [price]="item.price" [stock]="item.stock" [image]="item.image_fullpath" [name]="item.name"></card>
+</section>

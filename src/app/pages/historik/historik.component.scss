@@ -1,0 +1,17 @@
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    article {
+        display: grid;
+        grid-template-columns: 20% 40% 20%;
+        border: 1px solid #292929;
+        padding: 1rem;
+
+        p {
+            border-radius: var(--br);
+            border: 1px solid #292929;
+        }
+    }
+}

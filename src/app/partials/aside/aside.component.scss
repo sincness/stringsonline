@@ -1,0 +1,34 @@
+aside {
+    width: 250px;
+    background: var(--filler);
+    border: 1px solid var(--border);
+    details[open] summary ~ * {
+        animation: sweep .5s ease-in-out;
+    }
+
+    details {
+        margin: 1em 0;
+        user-select: none;
+        cursor: pointer;
+        summary {
+            user-select: none;
+            padding-left: 1em;
+            color: var(--highlight);
+            &::-webkit-details-marker {
+                display:none;
+            }
+        }
+        a {
+            display: block;
+            padding: .2em 2em;
+            text-decoration: none;
+            color: var(--highlight);
+
+        }
+    }
+}
+
+@keyframes sweep {
+    0%    {opacity: 0; margin-left: -10px}
+    100%  {opacity: 1; margin-left: 0px}
+  }

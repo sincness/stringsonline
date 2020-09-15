@@ -1,1 +1,25 @@
-<p>login works!</p>
+<section>
+
+    <form [formGroup]="login" (ngSubmit)="submit()" method="POST">
+      <h2>Log ind</h2>
+        <label for="username">Brugernavn</label>
+       <div>
+           <input type="text" formControlName="username" placeholder="Indtast dit brugernavn" id="username">
+           <span class="check" *ngIf="form.username.valid && !form.username.invalid"><i class="fas fa-check"></i></span>
+           <span class="denied" *ngIf="!form.username.valid && form.username.dirty"><i class="fas fa-times"></i></span>
+        </div>
+        <!-- <div *ngIf="form.username.invalid && form.username.touched" class="error"><p>Brugernavnet er ikke gyldigt</p></div> -->
+    
+        <label for="password">Adgangskode</label>
+        <div>
+            <input type="password" formControlName="password" placeholder="Indtast din adgangskode" id="password">
+            <span class="check" *ngIf="form.password.valid && !form.password.invalid"><i class="fas fa-check"></i></span>
+            <span class="denied" *ngIf="!form.password.valid && form.password.dirty"><i class="fas fa-times"></i></span>
+        </div>
+    
+        <!-- <div *ngIf="form.password.invalid && form.password.touched" class="error"><p>Adgangskoden er ikke gyldig</p></div> -->
+    
+        <button [disabled]="!login.valid" type="submit">Log ind  🚀 </button>
+        <span class="error" *ngIf="error">{{error}}</span>
+    </form>
+  </section>

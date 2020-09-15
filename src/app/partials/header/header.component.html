@@ -1,15 +1,55 @@
 <header>
-  <nav>
+ <nav>
+  <section class="guitar-nav">
+    <figure>
+      <img src="../../../assets/svg/logo.svg" alt="" draggable="false">
+    </figure>
     <ul>
-      <li>
-        <a routerLink="/">Forside</a>
-      </li>
-      <li>
-        <a routerLink="/vilkår">Salgs- og handelsbetingelser</a>
-      </li>
-      <li>
-        <button routerLink="/login">Login</button>
-      </li>
+      <li><a routerLink="/">Forside</a></li>
+      <li><a routerLink="/vilkår">Salgs- og handelsbetingelser</a></li>
+      <li *ngIf="!auth.online"><button class="cta" routerLink="/login">Log ind</button></li>
+      <li *ngIf="auth.online"><a routerLink="/ordrehistorik">Ordrehistorik</a></li>
+      <li *ngIf="auth.online"><button class="cta" (click)="auth.logout()">Log ud</button></li>
     </ul>
-  </nav>
+  </section>
+  <section class="infos">
+    <section class="contact">
+      <article class="mail">
+        <span class="material-icons">mail</span>
+        <label>SALES@STRINGSONLINE.COM</label>
+      </article>
+      <article class="phone">
+        <span class="material-icons">phone</span>
+        <label>+45 98 12 22 68</label>
+      </article>
+
+      <span routerLink="/kurv" class="material-icons cart">shopping_cart <span class="badge">{{items}}</span></span>
+    </section>
+
+    <form [formGroup]="search">
+
+      <input formControlName="keyword" type="text" placeholder="Indtast søgeord">
+      <button (click)="submit()" class="cta"><span (click)="submit()" class="material-icons">arrow_right_alt</span></button>
+    </form>
+
+
+  </section>
+
+  <section class="breadcrumb">
+    <a routerLink="/">
+      <span class="material-icons">home</span> Forside
+    </a>
+    
+  </section>
+</nav>
+
+
 </header>
+
+
+
+
+
+
+
+
