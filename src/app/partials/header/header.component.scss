@@ -91,7 +91,9 @@ header {
                 cursor: pointer;
                 span.badge {
                     position: absolute;
-                    transform: translate(80%, -180%);
+                    top: -.5rem;
+                    right: -.5rem;
+                    // transform: translate(80%, -180%);
                     background-color: #f14527;
                     border-radius: 50%;
                     font-size: 0.7rem;
@@ -107,22 +109,22 @@ header {
 
     }
 
-    .breadcrumb {
-        border-top: 1px solid #393939;
-        border-bottom: 1px solid #393939;
-        padding: .5rem 0;
-        margin: 1rem 0;
+    // .breadcrumb {
+    //     border-top: 1px solid #393939;
+    //     border-bottom: 1px solid #393939;
+    //     padding: .5rem 0;
+    //     margin: 1rem 0;
 
-        a {
-            display: flex;
-            align-items: center;
-            color: var(--highlight);
-            span {
-                padding-right: .25rem;
-                color: var(--highlight);
-            }
-        }
-    }
+    //     a {
+    //         display: inline-flex;
+    //         align-items: center;
+    //         color: var(--highlight);
+    //         span {
+    //             padding-right: .25rem;
+    //             color: var(--highlight);
+    //         }
+    //     }
+    // }
 
 
 }

@@ -18,6 +18,9 @@ export class ForsideComponent implements OnInit {
   async ngOnInit() {
     this.TitleService.setTitle(this.title);
     this.products = await this.http.getProducts().toPromise();
+    this.products = this.products.productgroups.items;
+    console.log(this.products);
+    // this.http.products$.subscribe(res => console.log(res))
     
   }
 

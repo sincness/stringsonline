@@ -1,13 +1,8 @@
 <section>
 
-    <article>
-        <p>26. marts 2020</p>
-        <p>DKK 38.398</p>
-        <p>Ordrenr. <span class="highlight">79651</span></p>
-    </article>
-    <article>
-        <p>26. marts 2020</p>
-        <p>DKK 38.398</p>
-        <p>Ordrenr. <span class="highlight">79651</span></p>
+    <article *ngFor="let order of orders">
+        <p>{{ timestampDate(order.created) }}</p>
+        <p>DKK {{order.total}}</p>
+        <p class="oid">Ordrenr. <span class="highlight">{{order.id}}</span></p>
     </article>
 </section>

@@ -1,0 +1,10 @@
+<section class="breadcrumb-container">
+    <span class="material-icons"> home </span>
+    <a routerLink="/">Forside</a>
+    <div class="breadcrumb-link-container" *ngIf="crumbs">
+        <div *ngFor="let item of crumbs">
+            <span class="separation">/</span>
+            <a routerLink="{{item.url}}">{{item.url}}</a>
+        </div>
+    </div>
+</section>

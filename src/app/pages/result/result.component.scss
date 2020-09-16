@@ -9,3 +9,85 @@ section {
     gap: 2rem;
     width: 100%;
 }
+article {
+    display: grid;
+    grid-template-columns: 1fr 60% 1fr;
+    // min-width: 75.3125vw;
+    figure {
+        position: relative;
+        width: 100%;
+        height: 280px;
+        background-color: #fff;
+        img {
+            position: absolute;
+            top: 50%; 
+            left: 50%;
+            width: 80%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    header {
+        padding: 1rem;
+        border-top: 1px solid #292929;
+        border-bottom: 1px solid #292929;
+        h3 {
+            font-size: 1.5rem;
+        }
+        p {
+            font-size: 1rem;
+            color: #ebebeb;
+            a.readmore {
+                font-weight: 300;
+                font-size: 1rem;
+                margin-left: .5rem;
+                color: var(--highlight);
+            }
+        }
+    }
+    section {
+        font-size: 1.1rem;
+        padding: 1rem;
+        border-top: 1px solid #292929;
+        border-bottom: 1px solid #292929;
+        border-right: 1px solid #292929;
+        label {
+            display: block;
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: .5em;
+            border: 1px solid #393939;
+            font-size: 1.2em;
+            border-radius: 4px;
+        }
+        button {
+            margin-bottom: 1em;
+            width: 100%;
+            padding: 1em .5em;
+            background-color: #D10061;
+            border-radius: var(--br);
+            border: none;
+            transition: all 180ms ease-in-out;
+            // transition: textHover 180ms ease-in-out;
+            &:hover {
+                // animation: textHover 180ms forwards ease-in-out;
+                background-color: hsl(332, 100%, 51%);
+                color: #ffF;
+            }
+        }
+        p {
+            text-align: right;
+        }
+
+    }
+}
+
+
+@keyframes textHover {
+    0% {
+        background-color: #D10061;   
+    }
+    100% {
+        background-color: hsl(332, 100%, 51%);
+        color: #fff;
+    }
+}

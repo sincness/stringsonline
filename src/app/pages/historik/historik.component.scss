@@ -5,13 +5,38 @@ section {
 
     article {
         display: grid;
-        grid-template-columns: 20% 40% 20%;
+        grid-template-columns: 20% 1fr 20%;
         border: 1px solid #292929;
         padding: 1rem;
 
         p {
             border-radius: var(--br);
-            border: 1px solid #292929;
+            border: 1px solid #3f3f3f;
+            padding: 1rem;
+            text-align: center;
+
+            &:nth-child(2) {
+                width: 110%;
+                transform: translateX(-15px);
+                border: none;
+                border-top: 1px solid #3f3f3f;
+                border-bottom: 1px solid #3f3f3f;
+                border-radius: 0;
+                position: relative;
+                z-index: -1;
+            }
+            &:nth-child(3) {
+                border-color: #535353;
+                .highlight {
+                    margin-left: 2rem;
+                    color: var(--highlight);
+                }
+            }
+
+            &.oid {
+                background-color: #232323;
+            }
+
         }
     }
 }

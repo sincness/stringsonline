@@ -1,4 +1,18 @@
-<h2 *ngIf="!products">Varen findes ikke</h2>
 <section *ngIf="products">
+    <section class="sort-controls">
+        <select (change)="changeProducent($event)" name="producent" id="producent" *ngIf="http.brands$ | async as brands">
+            <option hidden selected>Producent</option>
+          <option *ngFor="let item of brands" [value]="item.title">{{item.title}}</option>
+        </select>
+        <select (change)="onChange($event)" name="sort" id="sort">
+          <option hidden selected>Sorter efter..</option>
+          <option value="price1">Laveste til højeste pris</option>
+          <option value="price2">Højeste til laveste pris</option>
+          <option value="alfa1">A - Å</option>
+          <option value="alfa2">Å - A</option>
+        </select>
+    </section>
+
     <card *ngFor="let item of products" [id]="item.id" [description]="item.description_short" [price]="item.price" [stock]="item.stock" [image]="item.image_fullpath" [name]="item.name"></card>
 </section>
+<h2 *ngIf="!products || products <= 0">Varen findes ikke</h2>

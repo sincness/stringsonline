@@ -55,10 +55,28 @@ article {
             background-color: #D10061;
             border-radius: var(--br);
             border: none;
+            transition: all 180ms ease-in-out;
+            // transition: textHover 180ms ease-in-out;
+            &:hover {
+                // animation: textHover 180ms forwards ease-in-out;
+                background-color: hsl(332, 100%, 51%);
+                color: #ffF;
+            }
         }
         p {
             text-align: right;
         }
 
+    }
+}
+
+
+@keyframes textHover {
+    0% {
+        background-color: #D10061;   
+    }
+    100% {
+        background-color: hsl(332, 100%, 51%);
+        color: #fff;
     }
 }

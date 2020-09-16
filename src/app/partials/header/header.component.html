@@ -23,7 +23,7 @@
         <label>+45 98 12 22 68</label>
       </article>
 
-      <span routerLink="/kurv" class="material-icons cart">shopping_cart <span class="badge">{{items}}</span></span>
+      <span routerLink="/kurv" class="material-icons cart">shopping_cart <span #quantity class="badge">{{items}}</span></span>
     </section>
 
     <form [formGroup]="search">
@@ -34,13 +34,13 @@
 
 
   </section>
-
-  <section class="breadcrumb">
+  <!-- <breadcrumb></breadcrumb> -->
+<!-- <section class="breadcrumb">
     <a routerLink="/">
       <span class="material-icons">home</span> Forside
     </a>
     
-  </section>
+  </section> -->
 </nav>
 
 

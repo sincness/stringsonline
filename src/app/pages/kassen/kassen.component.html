@@ -1,1 +1,89 @@
-<p>kassen works!</p>
+<h1>Kassen</h1>
+<form class="order" [formGroup]="order">
+    <section>
+        <h2>Fakturerings- & leveringsadresse</h2>
+        <div class="input-container">
+            <label for="firstname">Fornavn <span *ngIf="f.firstname.invalid" class="red">*</span><span class="check" *ngIf="f.firstname.valid && !f.firstname.invalid"><i class="fas fa-check"></i></span></label>
+            <input type="text" formControlName="firstname" name="firstname">
+        </div>
+        <div class="input-container">
+            <label for="lastname">Efternavn <span *ngIf="f.lastname.invalid" class="red">*</span><span class="check" *ngIf="f.lastname.valid && !f.lastname.invalid"><i class="fas fa-check"></i></span></label>
+            <input type="text" formControlName="lastname" name="lastname">
+        </div>
+        <div class="input-container">
+            <label for="address">Gade/vej og husnummer <span *ngIf="f.address.invalid" class="red">*</span><span class="check" *ngIf="f.address.valid && !f.address.invalid"><i class="fas fa-check"></i></span></label>
+            <input type="text" formControlName="address" name="address">
+        </div>
+        <div class="input-container">
+            
+            <label for="zipcode">Postnummer <span *ngIf="f.zipcode.invalid" class="red">*</span><span class="check" *ngIf="f.zipcode.valid && !f.zipcode.invalid"><i class="fas fa-check"></i></span></label>
+            <input type="text" formControlName="zipcode" name="zipcode">
+        </div>
+
+        <div class="input-container">
+            <label for="city">By <span *ngIf="f.city.invalid" class="red">*</span><span class="check" *ngIf="f.city.valid && !f.city.invalid"><i class="fas fa-check"></i></span></label>
+            <input type="text" formControlName="city" name="city">
+        </div>
+
+        
+    </section>
+    <section>
+        <h2>Email & telefon</h2>
+
+        <div class="input-container">
+            <label for="email">E-mail <span *ngIf="f.email.invalid" class="red">*</span><span class="check" *ngIf="f.email.valid && !f.email.invalid"><i class="fas fa-check"></i></span></label>
+            <input type="email" formControlName="email" name="email">
+        </div>
+
+        <div class="input-phone">
+
+            <label for="phone">Telefon <span *ngIf="f.phone.invalid" class="red">*</span><span class="check" *ngIf="f.phone.valid && !f.phone.invalid"><i class="fas fa-check"></i></span></label>
+            <input type="text" formControlName="phone" name="phone">
+        </div>
+
+
+        
+    </section>
+    <section class="payment">
+        <h2>Betalingsmetode</h2>
+        <div class="radio-container">
+            <input type="radio" id="bank">
+            <label for="bank">Bankoverførsel</label>
+        </div>
+        <div class="radio-container">
+            <details id="vcc">
+                <summary>
+                <input type="radio" id="creditcard">
+                <label for="creditcard">Kreditkort (MasterCard, VISA)</label>
+                </summary>
+                    <div class="input-container">
+                        <label for="cardnumber">Kortnummer </label>
+                        <input type="number" id="cardnumber" placeholder="Kortnummer">
+                    </div>
+                    <div class="inputs-container">
+                        <div class="input-container">
+                            <label for="month">Måned </label>
+                            <input type="number" id="month" placeholder="Måned">
+                        </div>
+                        <div class="input-container">
+                            <label for="year">År </label>
+                            <input type="number" id="year" placeholder="År">
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <label for="cvc">Kontrolcifre</label>
+                        <input type="number" id="cvc" placeholder="Kontrolcifre">
+                    </div>
+                    <div class="input-container">
+                        <label for="owner">Kort indehaver</label>
+                        <input type="text" id="owner" placeholder="Kort indehaver">
+                    </div>
+
+            </details>
+        
+        </div>
+        <!-- <label for="comment">Kommentar</label>
+        <textarea formControlName="comment" name="comment"></textarea> -->
+        <button type="button" class="cta" (click)="submit()">BETAL</button>
+    </section>
+</form>

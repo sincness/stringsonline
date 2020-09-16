@@ -9,6 +9,20 @@
         </figcaption>
     </article>
 
+    <section class="sort-controls">
+        <!-- <select name="producent" id="producent" *ngIf="http.brands$ | async as brands">
+            <option hidden selected>Producent</option>
+          <option *ngFor="let item of brands" value="item.id">{{item.title}}</option>
+        </select> -->
+        <select (change)="onChange($event)" name="sort" id="sort">
+          <option hidden selected>Sorter efter..</option>
+          <option value="price1">Laveste til højeste pris</option>
+          <option value="price2">Højeste til laveste pris</option>
+          <option value="alfa1">A - Å</option>
+          <option value="alfa2">Å - A</option>
+        </select>
+    </section>
+
     <h2>{{ data.title }} produkter</h2>
     <card *ngFor="let item of brand" [id]="item.id" [description]="item.description_short" [price]="item.price" [stock]="item.stock" [image]="item.image_fullpath" [name]="item.name"></card>
 </section>

@@ -13,6 +13,31 @@
   // color: #131313;
 }
 
+* {
+  &::-webkit-scrollbar {
+    width: 8px;        
+}
+
+/* Track */
+&::-webkit-scrollbar-track {
+    background: var(--input-fill);
+}
+
+/* Handle */
+&::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 2px;
+}
+
+/* Handle on hover */
+&::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    background: var(--highlight);
+
+
+}
+}
+
 :root {
   --br: 5px;
   --dark-font: #131313;
@@ -80,6 +105,25 @@ input {
   color: #000;
 }
 
-app-produkter, app-historik, app-kurv {
+app-produkter, app-historik, app-kurv, app-brands {
   width: 100%;
+}
+
+.wiggle {
+  animation: wriggle 180ms ease-in-out forwards;
+}
+
+@keyframes wriggle{
+  0% {
+      transform: rotate(0);
+  }
+  25% {
+      transform: rotate(20deg) scale(1.2);
+  }
+  75% {
+      transform: rotate(-20deg) scale(1.2);
+  }
+  100% {
+      transform: rotate(0);
+  }
 }

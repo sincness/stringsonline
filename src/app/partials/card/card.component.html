@@ -2,12 +2,13 @@
     
     
     <figure>
-        <img [src]="image" [alt]="name">
+        <img draggable="false" [src]="image" [alt]="name">
     </figure>
 
     <header>
         <h3>{{ name }}</h3>
-        <p>{{ description }}<a class="readmore" routerLink="/produkter/{{id}}">Læs mere</a></p>
+        <p>{{ description }}<a class="readmore" [hidden]="check" routerLink="/produkt/{{title}}/{{name}}/{{id}}">Læs mere</a></p>
+        <p>{{ description }}<a class="readmore" [hidden]="!check" routerLink="/produkt/søg/{{id}}">Læs mere</a></p>
     </header>
 
     <section>

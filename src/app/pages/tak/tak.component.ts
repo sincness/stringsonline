@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'src/app/services/cookie.service';
 
 @Component({
   selector: 'app-tak',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TakComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cookie: CookieService) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy() {
+    this.cookie.delete('purchase');
   }
 
 }

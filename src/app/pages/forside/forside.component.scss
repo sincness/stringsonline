@@ -1,7 +1,13 @@
 article.hero {
     display: grid;
-    grid-template-columns: 75% 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    figure {
 
+        img {
+            width: 100%;
+        }
+    }
     h2.title {
         font-size: 2rem;
         font-weight: 300;

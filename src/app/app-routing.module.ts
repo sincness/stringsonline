@@ -10,6 +10,10 @@ import { ResultComponent } from './pages/result/result.component';
 import { ProdukterComponent } from './pages/produkter/produkter.component';
 import { HistorikComponent } from './pages/historik/historik.component';
 import { BrandsComponent } from './pages/brands/brands.component';
+import { KassenComponent } from './pages/kassen/kassen.component';
+import { ProduktComponent } from './pages/produkt/produkt.component';
+import { TakComponent } from './pages/tak/tak.component';
+import { BuyGuard } from './guards/buy.guard';
 
 
 const routes: Routes = [
@@ -17,10 +21,14 @@ const routes: Routes = [
   { path: 'forside', component: ForsideComponent, data: { title: 'Forside' } },
   { path: 'vilkår', component: TermsComponent, data: { title: 'Salgs- og handelsbetingelser' } },
   { path: 'ordrehistorik', canActivate: [AuthGuard], component: HistorikComponent, data: { title: 'Ordrehistorik' } },
+  { path: 'tak/:id', canActivate: [BuyGuard], component: TakComponent, data: { title: 'Tak for din bestilling' } },
   { path: 'kurv', canActivate: [AuthGuard], component: KurvComponent, data: { title: 'Indkøbskurv' } },
+  { path: 'kassen', canActivate: [AuthGuard], component: KassenComponent, data: { title: 'Kassen' } },
   { path: 'login', component: LoginComponent, data: { title: 'Log ind' } },
   { path: 'søg/:keyword', component: ResultComponent, data: { title: 'Søgeresultat' }, pathMatch: 'full' },
-  { path: 'produkter/:id', component: ProdukterComponent, data: { title: ' produkter' }, pathMatch: 'full' },
+  { path: 'produkter/:title/:id', component: ProdukterComponent, data: { title: ' produkter' }, pathMatch: 'full' },
+  { path: 'produkt/:title/:name/:id', component: ProduktComponent, data: { title: ' produkt' }, pathMatch: 'full' },
+  { path: 'produkt/:title/:id', component: ProduktComponent, data: { title: ' produkt' }, pathMatch: 'full' },
   { path: 'brands/:id', component: BrandsComponent, data: { title: ' brand' }, pathMatch: 'full' },
   { path: '**', component: FejlComponent, data: { title: 'Fejl'} }
 ];

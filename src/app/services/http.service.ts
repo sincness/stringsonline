@@ -32,6 +32,12 @@ export class HttpService {
     return this.http.get(`https://api.mediehuset.net/stringsonline/brands/${id}`);
   }
 
+  getProductDetails(id: string) {
+    return this.http.get(`https://api.mediehuset.net/stringsonline/products/${id}`).pipe(
+      map((res: any) => res.item)
+    );
+  }
+
   getProduct(id: string) {
     return this.http.get(`https://api.mediehuset.net/stringsonline/productgroups/${id}`).pipe(
       map((res: any) => res.group.products)
@@ -54,6 +60,27 @@ export class HttpService {
     return this.http.get<Response>(`https://api.mediehuset.net/stringsonline/search/${keyword}`).pipe(
       map(response => response.items)
     )
+  }
+
+  getOrders() {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.cookie.get('token')}`);
+    return this.http.get<Response>('https://api.mediehuset.net/stringsonline/orders', {headers}).pipe(
+      map(response => response.items)
+    )
+  }
+  getOrder(oid: string) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.cookie.get('token')}`);
+    return this.http.get<any>(`https://api.mediehuset.net/stringsonline/orders${oid}`, {headers}).pipe(
+      map(response => response.item)
+    )
+  }
+  
+  postOrder(data: object) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.cookie.get('token')}`);
+    return this.http.post<any>(`https://api.mediehuset.net/stringsonline/orders`, data, {headers}).pipe(
+      map(response => response)
+    )
+
   }
 
   

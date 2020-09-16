@@ -1,0 +1,105 @@
+$unchecked-star: '\2606';
+$unchecked-color: #888;
+$checked-star: '\2605';
+$checked-color: orange;
+
+.product-details-container {
+    display: grid;
+    grid-template-columns: 20% 1fr 20%;
+    gap: 1em;
+    .product-details-images, .product-brand-rating {
+        figure {
+            width: 100%;
+            img {
+                padding: 1rem;
+                background: #fff;
+                width: 100%;
+            }
+        }
+      
+    }
+    .product-details-midle {
+        p {
+            margin-top: 1em;
+        }
+    }
+    .product-brand-rating {
+        h3 {
+            font-weight: 300;
+        }
+        button {
+            margin-bottom: 1em;
+            width: 100%;
+            padding: 1em .5em;
+            background-color: #D10061;
+            border-radius: var(--br);
+            border: none;
+            transition: all 180ms ease-in-out;
+            // transition: textHover 180ms ease-in-out;
+            &:hover {
+                // animation: textHover 180ms forwards ease-in-out;
+                background-color: hsl(332, 100%, 51%);
+                color: #ffF;
+            }
+        }
+        section.rating {
+            font-size: 2rem;
+            .star-cb-group {
+            /* remove inline-block whitespace */
+            * {
+                font-size: 2rem;
+            }
+            /* flip the order so we can use the + and ~ combinators */
+            unicode-bidi: bidi-override;
+            direction: rtl;
+            & > input {
+                display: none;
+                & + label {
+                /* only enough room for the star */
+                display: inline-block;
+                overflow: hidden;
+                text-indent: 9999px;
+                width: 1em;
+                white-space: nowrap;
+                cursor: pointer;
+                &:before {
+                    display: inline-block;
+                    text-indent: -9999px;
+                    content: $unchecked-star;
+                    color: $unchecked-color;
+                }
+                }
+                &:checked ~ label:before,
+                & + label:hover ~ label:before,
+                & + label:hover:before {
+                content: $checked-star;
+                color: #e52;
+                text-shadow: 0 0 1px #333;
+                }
+            }
+            
+            /* the hidden clearer */
+            & > .star-cb-clear + label {
+                text-indent: -9999px;
+                width: .5em;
+                margin-left: -.5em;
+            }
+            & > .star-cb-clear + label:before {
+                width: .5em;
+            }
+
+            &:hover > input + label:before {
+                content: $unchecked-star;
+                color: $unchecked-color;
+                text-shadow: none;
+            }
+            &:hover > input + label:hover ~ label:before,
+            &:hover > input + label:hover:before {
+                content: $checked-star;
+                color: $checked-color;
+                text-shadow: 0 0 1px #333;
+            }
+            } 
+        }
+    }
+}

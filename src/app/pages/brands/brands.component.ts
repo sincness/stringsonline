@@ -35,4 +35,38 @@ export class BrandsComponent implements OnInit {
 
   }
 
+    onChange(event) {
+      switch (event.target.value) {
+        case 'price1':
+          this.sortPrice(1);
+          break;
+          case 'price2':
+            this.sortPrice(2);
+          break;
+        case 'alfa1':
+          this.sortName(1);
+          break;
+        case 'alfa2':
+          this.sortName(2);
+          break;
+      }
+    }
+
+  sortName(method) {
+    if (method === 1) {
+      this.brand.sort((a, b) => (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0);
+    }
+    if (method === 2) {
+      this.brand.sort((a, b) => (b.name < a.name) ? -1 : (b.name > a.name) ? 1 : 0);
+    }
+  }
+  sortPrice(method) {
+    if (method === 1) {
+      this.brand.sort((a, b) => (+a.price < +b.price) ? -1 : (+a.price > +b.price) ? 1 : 0);
+    }
+    if (method === 2) {
+      this.brand.sort((a, b) => (+b.price < +a.price) ? -1 : (+b.price > +a.price) ? 1 : 0);
+    }
+  }
+
 }

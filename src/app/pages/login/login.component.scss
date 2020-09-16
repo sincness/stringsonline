@@ -26,6 +26,7 @@
                 z-index: 1;
                 position: absolute;
                 font-size: 1rem;
+                    
                     &.denied {
                         color: #c14747 !important;
                     }
@@ -43,6 +44,13 @@
             background-color: #47c160;
             color: #fff;
         }
+    }
+
+    .error {
+        display: block;
+        padding: 1rem;
+        color: #c14747 !important;
+        animation: fade 2000ms ease-in-out forwards;
     }
 
 

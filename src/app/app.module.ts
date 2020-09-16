@@ -21,6 +21,8 @@ import { ResultComponent } from './pages/result/result.component';
 import { CardComponent } from './partials/card/card.component';
 import { ProdukterComponent } from './pages/produkter/produkter.component';
 import { BrandsComponent } from './pages/brands/brands.component';
+import { ProduktComponent } from './pages/produkt/produkt.component';
+import { BreadcrumbComponent } from './partials/breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { BrandsComponent } from './pages/brands/brands.component';
     CardComponent,
     ProdukterComponent,
     BrandsComponent,
+    ProduktComponent,
+    BreadcrumbComponent,
   ],
   imports: [
     BrowserModule,

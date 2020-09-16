@@ -2,23 +2,41 @@
     <h2>Indkøbskurven er tom</h2>
 </section>
 <section class="cart-wrapper" *ngIf="products">
-    <article *ngFor="let item of products" [attr.data-id]="item.id">
+    <article *ngFor="let item of products" [attr.data-id]="item.id" [attr.data-pid]="item.product_id">
         
         <figure>
-            <img [src]="item.image" [alt]="item.name">
+            <img draggable="false" [src]="item.image_fullpath" [alt]="item.name">
         </figure>
         
-        <header>
-            <!-- {{item.id}} -->
+        <section class="first">
             <h3>{{ item.name }}</h3>
-        </header>
-    
-        <section>
-            <label>Pris: DKK {{ item.price }}</label>
-            <button><span class="material-icons">close</span></button>
-            <p *ngIf="(item.stock > 0)">{{ item.stock }} på lager</p>
-            <p *ngIf="(item.stock <= 0)">Varen er ikke på lager</p>
+        </section>
+        
+        <section class="second">
+            <label>antal: </label>
+            <button (click)="subtract(item.id, item.product_id, item.quantity)" class="minus">-</button>
+            <p *ngIf="item.quantity">
+                {{item.quantity}}
+            </p>
+            <button (click)="add(item.product_id, item.quantity)" class="plus">+</button>
+        </section>
+        <section class="third">
+            <label>DKK {{ item.price }}</label>
+            <button (click)="delete(item.id)"><span class="material-icons">close</span></button>
+            <!-- <p *ngIf="(item.stock > 0)">{{ item.stock }} på lager</p>
+            <p *ngIf="(item.stock <= 0)">Varen er ikke på lager</p> -->
         </section>
         
     </article>
+
+    <section class="total">
+        <div class="texts">
+            <div>
+                <h2>BELØB DKK {{total}}</h2>
+                <p>prisen er inkl. moms</p>
+            </div>
+            <button (click)="cart.deleteAll()" class="clear">RYD</button>
+        </div>
+        <a class="kassen" routerLink="/kassen">TIL KASSEN</a>
+    </section>
 </section>

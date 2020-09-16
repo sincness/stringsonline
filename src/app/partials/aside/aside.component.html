@@ -1,7 +1,7 @@
 <aside *ngIf="http.products$ | async as products">
     <details *ngFor="let product of products">
         <summary>{{product.title}}</summary>
-        <a *ngFor="let item of product.subgroups" routerLink="produkter/{{item.id}}">{{item.title}}</a>
+        <a *ngFor="let item of product.subgroups" routerLink="produkter/{{item.title}}/{{item.id}}">{{item.title}}</a>
     </details> 
     <details *ngIf="http.brands$ | async as brands">
         <summary>Brands</summary>
