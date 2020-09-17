@@ -1,0 +1,93 @@
+<!-- <span *ngFor="let star of stars" class="material-icons">star</span> -->
+    <ng-container *ngIf='!forDisplay'>
+        <div class="score clickable" [ngSwitch]="score">
+            <div *ngSwitchCase="1">
+                <span (click)="mark(0)"><i class='fa to-rate fa-star'></i></span>
+                <span (click)="mark(1)"><i class='fa to-rate fa-star-o'></i></span>
+                <span (click)="mark(2)"><i class='fa to-rate fa-star-o'></i></span>
+                <span (click)="mark(3)"><i class='fa to-rate fa-star-o'></i></span>
+                <span (click)="mark(4)"><i class='fa to-rate fa-star-o'></i></span>
+            </div>
+            <div *ngSwitchCase="2">
+                <span (click)="mark(0)"><i class='fa to-rate fa-star'></i></span>
+                <span (click)="mark(1)"><i class='fa to-rate fa-star'></i></span>
+                <span (click)="mark(2)"><i class='fa to-rate fa-star-o'></i></span>
+                <span (click)="mark(3)"><i class='fa to-rate fa-star-o'></i></span>
+                <span (click)="mark(4)"><i class='fa to-rate fa-star-o'></i></span>
+            </div>
+            <div *ngSwitchCase="3">
+                <span (click)="mark(0)"><i class='fa to-rate fa-star'></i></span>
+                <span (click)="mark(1)"><i class='fa to-rate fa-star'></i></span>
+                <span (click)="mark(2)"><i class='fa to-rate fa-star'></i></span>
+                <span (click)="mark(3)"><i class='fa to-rate fa-star-o'></i></span>
+                <span (click)="mark(4)"><i class='fa to-rate fa-star-o'></i></span>
+            </div>
+            <div *ngSwitchCase="4">
+                <span (click)="mark(0)"><i class='fa to-rate fa-star'></i></span>
+                <span (click)="mark(1)"><i class='fa to-rate fa-star'></i></span>
+                <span (click)="mark(2)"><i class='fa to-rate fa-star'></i></span>
+                <span (click)="mark(3)"><i class='fa to-rate fa-star'></i></span>
+                <span (click)="mark(4)"><i class='fa to-rate fa-star-o'></i></span>
+            </div>
+            <div *ngSwitchCase="5">
+                <span (click)="mark(0)"><i class='fa to-rate fa-star'></i></span>
+                <span (click)="mark(1)"><i class='fa to-rate fa-star'></i></span>
+                <span (click)="mark(2)"><i class='fa to-rate fa-star'></i></span>
+                <span (click)="mark(3)"><i class='fa to-rate fa-star'></i></span>
+                <span (click)="mark(4)"><i class='fa to-rate fa-star'></i></span>
+            </div>
+            <div *ngSwitchDefault>
+                <span (click)="mark(0)"><i class='fa to-rate fa-star-o'></i></span>
+                <span (click)="mark(1)"><i class='fa to-rate fa-star-o'></i></span>
+                <span (click)="mark(2)"><i class='fa to-rate fa-star-o'></i></span>
+                <span (click)="mark(3)"><i class='fa to-rate fa-star-o'></i></span>
+                <span (click)="mark(4)"><i class='fa to-rate fa-star-o'></i></span>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf='forDisplay'>
+        <div class="score" [ngSwitch]="score">
+            <div *ngSwitchCase="1">
+                <span><i class='fa to-rate fa-star'></i></span>
+                <span><i class='fa to-rate fa-star-o'></i></span>
+                <span><i class='fa to-rate fa-star-o'></i></span>
+                <span><i class='fa to-rate fa-star-o'></i></span>
+                <span><i class='fa to-rate fa-star-o'></i></span>
+            </div>
+            <div *ngSwitchCase="2">
+                <span><i class='fa to-rate fa-star'></i></span>
+                <span><i class='fa to-rate fa-star'></i></span>
+                <span><i class='fa to-rate fa-star-o'></i></span>
+                <span><i class='fa to-rate fa-star-o'></i></span>
+                <span><i class='fa to-rate fa-star-o'></i></span>
+            </div>
+            <div *ngSwitchCase="3">
+                <span><i class='fa to-rate fa-star'></i></span>
+                <span><i class='fa to-rate fa-star'></i></span>
+                <span><i class='fa to-rate fa-star'></i></span>
+                <span><i class='fa to-rate fa-star-o'></i></span>
+                <span><i class='fa to-rate fa-star-o'></i></span>
+            </div>
+            <div *ngSwitchCase="4">
+                <span><i class='fa to-rate fa-star'></i></span>
+                <span><i class='fa to-rate fa-star'></i></span>
+                <span><i class='fa to-rate fa-star'></i></span>
+                <span><i class='fa to-rate fa-star'></i></span>
+                <span><i class='fa to-rate fa-star-o'></i></span>
+            </div>
+            <div *ngSwitchCase="5">
+                <span><i class='fa to-rate fa-star'></i></span>
+                <span><i class='fa to-rate fa-star'></i></span>
+                <span><i class='fa to-rate fa-star'></i></span>
+                <span><i class='fa to-rate fa-star'></i></span>
+                <span><i class='fa to-rate fa-star'></i></span>
+            </div>
+            <div *ngSwitchDefault>
+                <span><i class='fa to-rate fa-star-o'></i></span>
+                <span><i class='fa to-rate fa-star-o'></i></span>
+                <span><i class='fa to-rate fa-star-o'></i></span>
+                <span><i class='fa to-rate fa-star-o'></i></span>
+                <span><i class='fa to-rate fa-star-o'></i></span>
+            </div>
+        </div>
+    </ng-container>

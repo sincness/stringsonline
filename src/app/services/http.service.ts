@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { shareReplay, map } from 'rxjs/operators';
 import { CookieService } from './cookie.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 interface Response {
   status: boolean;
@@ -17,6 +17,7 @@ export class HttpService {
 
   public brandsCache$;
   public productsCache$;
+  public ratingSubject = new Subject<any>();
 
   constructor(private http: HttpClient, private cookie: CookieService) { }
 
@@ -38,6 +39,11 @@ export class HttpService {
     );
   }
 
+  getProductByGroup(id: string) {
+    return this.http.get(`https://api.mediehuset.net/stringsonline/product/groups/${id}`).pipe(
+      map((res: any) => res.group.products)
+    );
+  }
   getProduct(id: string) {
     return this.http.get(`https://api.mediehuset.net/stringsonline/productgroups/${id}`).pipe(
       map((res: any) => res.group.products)
@@ -49,11 +55,18 @@ export class HttpService {
 
   postRating(data: object) {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.cookie.get('token')}`);
+    this.ratingSubject.next('change');
     return this.http.post(`https://api.mediehuset.net/stringsonline/ratings`, data, {headers});
   }
 
   getRatings(id: string) {
     return this.http.get<Response>(`https://api.mediehuset.net/stringsonline/ratings/list/${id}`)
+  }
+
+  deleteRating(id: string) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.cookie.get('token')}`);
+    this.ratingSubject.next('change');
+    return this.http.delete(`https://api.mediehuset.net/stringsonline/ratings/${id}`, {headers})
   }
 
   search(keyword: string) {
@@ -70,17 +83,19 @@ export class HttpService {
   }
   getOrder(oid: string) {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.cookie.get('token')}`);
-    return this.http.get<any>(`https://api.mediehuset.net/stringsonline/orders${oid}`, {headers}).pipe(
-      map(response => response.item)
+    return this.http.get<any>(`https://api.mediehuset.net/stringsonline/orders/${oid}`, {headers}).pipe(
+      map(response => response.order)
     )
   }
-  
   postOrder(data: object) {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.cookie.get('token')}`);
     return this.http.post<any>(`https://api.mediehuset.net/stringsonline/orders`, data, {headers}).pipe(
       map(response => response)
     )
+  }
 
+  getAverageRating(pid: string) {    
+    return this.http.get(`https://api.mediehuset.net/stringsonline/ratings/average/${pid}`);
   }
 
   

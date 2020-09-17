@@ -1,3 +1,5 @@
+<breadcrumb [crumbs]="[{ place: 'Indkøbskurv', url: '/indkøbskurv'}]"></breadcrumb>
+
 <section class="cart-wrapper" *ngIf="!products">
     <h2>Indkøbskurven er tom</h2>
 </section>
@@ -21,7 +23,7 @@
             <button (click)="add(item.product_id, item.quantity)" class="plus">+</button>
         </section>
         <section class="third">
-            <label>DKK {{ item.price }}</label>
+            <label>DKK {{ toFixed(item.price) }}</label>
             <button (click)="delete(item.id)"><span class="material-icons">close</span></button>
             <!-- <p *ngIf="(item.stock > 0)">{{ item.stock }} på lager</p>
             <p *ngIf="(item.stock <= 0)">Varen er ikke på lager</p> -->

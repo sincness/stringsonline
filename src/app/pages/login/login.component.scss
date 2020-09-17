@@ -4,20 +4,29 @@
     }
 
     form {
-        margin: 1rem 10%;
-        margin-left: auto;
-        margin-right: auto;
         width: 300px;
+
+        
         label {
             display: block;
             margin: 1rem 0 .5rem;
             font-size: .875rem;
+            
         }
         div {
             position: relative;
             input {
-                padding: .5rem;
+                border-radius: var(--br);
+                padding: 0.8em;
+                width: calc(100% - 13rem);
+                border: 1px solid var(--border);
+                background-color: var(--filler);
+                color: var(--highlight);
+                // padding: .5rem;
                 width: 100%;
+                &::placeholder {
+                    color: var(--highlight);
+                }
             }
             span {
                 transform: translateY(-50%);

@@ -1,8 +1,10 @@
+<breadcrumb [crumbs]="[{ place: 'Ordrehistorik', url: '/ordrehistorik'}]"></breadcrumb>
+
 <section>
 
     <article *ngFor="let order of orders">
         <p>{{ timestampDate(order.created) }}</p>
-        <p>DKK {{order.total}}</p>
+        <p>DKK {{toFixed(order.total)}}</p>
         <p class="oid">Ordrenr. <span class="highlight">{{order.id}}</span></p>
     </article>
 </section>

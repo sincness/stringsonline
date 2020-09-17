@@ -6,9 +6,10 @@ section {
     article {
         display: grid;
         grid-template-columns: 20% 1fr 20%;
-        border: 1px solid #292929;
         padding: 1rem;
-
+        @media (max-width: 1115px) {
+            grid-template-columns: 1fr;
+        }
         p {
             border-radius: var(--br);
             border: 1px solid #3f3f3f;
@@ -24,6 +25,16 @@ section {
                 border-radius: 0;
                 position: relative;
                 z-index: -1;
+                @media (max-width: 1115px) {
+                    width: 99%;
+                    margin: 0 auto;
+                    transform: translateX(0);
+
+                    border-top: unset;
+                    border-bottom: unset;
+                    border-right: 1px solid #3f3f3f;
+                    border-left: 1px solid #3f3f3f;
+                }
             }
             &:nth-child(3) {
                 border-color: #535353;

@@ -1,24 +1,44 @@
+<breadcrumb></breadcrumb>
+
 <article class="hero">
 
     <figure>
         <img src="../../../assets/img/acoustic.jpg" alt="Guitar">
+        <figcaption>
+            <h2 class="title">Martin <span>GPC-11E</span></h2>
+            <p>SERIES ELECTRO ACOUSTIC</p>
+            <section>
+                <h3>SE DEN NYE GENERATION HALVACOUSTISKE</h3>
+            </section>
+            <button class="cta">LÆS MERE</button>
+        </figcaption>
     </figure>
-
-    <section>
-        <h2 class="title">Martin <span>GPC-11E</span></h2>
-        <h3>SERIES ELECTRO ACOUSTIC</h3>
-
-        <h2>SE DEN NYE GENERATION HALVACOUSTISKE</h2>
-
-        <button class="cta">LÆS MERE</button>
-    </section>
+        
 
 </article>
 
-<section>
+<section class="favorites" *ngIf="favorites">
 
-    <article *ngFor="let item of products">
-<h2>hej</h2>
-    </article>
+    <h2>Kundernes favoritter</h2>
+    <section>
+        <article *ngFor="let item of favorites">
+            <figure>
+                <img [src]="item.image_fullpath" [alt]="item.image_filename">
+            </figure>
+            <figcaption>
+                <h3>{{item.name}}</h3>
+                <p>{{item.description_short}}
+                    <a class="highlight" routerLink="/produkt/{{item.name}}/{{item.id}}">Læs mere.</a>
+                </p>
+                <span class="stars">
+                    <rating *ngIf="item.rating !== undefined" [score]="item.rating" [forDisplay]="true"></rating>
+                </span>
+                <div class="price-button">
+                    <label>Pris: DKK {{toFixed(item.price)}}</label>
+                    <button (click)="addProduct(item.id)">Læg i kurv</button>
+                </div>
+            </figcaption>
+        </article>
+    </section>
 
 </section>

@@ -7,35 +7,36 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./breadcrumb.component.scss']
 })
 export class BreadcrumbComponent implements OnInit {
-  // @Input('crumbs') crumbs;
-  crumbs: Array<Object>;
+  @Input('crumbs') crumbs;
+  // crumbs: Array<Object>;
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.setCrumb();
+    // this.setCrumb();
     this.router.events.subscribe(async res => {
         if (res instanceof NavigationEnd) {
-          this.setCrumb();
+          // this.setCrumb();
         }
     });
   }
 
-  setCrumb() {
-    const paths = location.pathname.split('/');
-    paths.shift();
-    if(paths[0] === 'forside') paths.shift();
+  // setCrumb() {
+  //   const paths = location.pathname.split('/');
+  //   paths.shift();
+  //   if(paths[0] === 'forside') paths.shift();
 
-    this.crumbs = [];
-    for (const path of paths) {
-      // decodeURIComponent(path)
-      let uri = encodeURI(path);
-      uri = decodeURI(uri);
-      console.log(path);
+  //   this.crumbs = [];
+  //   for (const path of paths) {
+  //     // decodeURIComponent(path)
+  //     // let uri = encodeURI(path);
+  //     // uri = decodeURI(uri);
+  //     // console.log(path);
       
-      this.crumbs.push({url: uri});
-      // this.crumbs.push({url: path.replace(/%20/g, ' ')});
-    }
-    // if(this.crumbs[2].url.includes('%20'))
-  }
+  //     const decoded = decodeURIComponent(path);
+  //     // this.crumbs.push({url: uri});
+  //     this.crumbs.push({url: decoded});
+  //   }
+  //   // if(this.crumbs[2].url.includes('%20'))
+  // }
 
 }

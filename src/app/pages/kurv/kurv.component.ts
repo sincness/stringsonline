@@ -114,6 +114,11 @@ export class KurvComponent implements OnInit {
     this.cart.patchAdd(pid, amount)
   }
 
+  toFixed(n) {
+    return Number(n).toFixed();
+  }
+
+
   // regulateProducts() {
   //   const map: any = new Map(this.products.map(o => [o.product_id, {...o }]));
   //   for (const {product_id} of this.products) map.get(product_id).quantity++;

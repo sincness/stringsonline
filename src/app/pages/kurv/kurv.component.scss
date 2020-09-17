@@ -7,12 +7,17 @@ section.cart-wrapper {
     article {
         display: grid;
         grid-template-columns: 1fr 30% 20% 1fr;
-        // min-width: 75.3125vw;
+        grid-template-columns: repeat(4, 1fr);
+        min-height: 13rem;
         figure {
             position: relative;
             width: 100%;
             height: 100%;
             background-color: #fff;
+            @media (max-width: 700px) {
+                border-left: 1px solid #292929;
+            }
+
             img {
                 position: absolute;
                 top: 50%; 
@@ -43,25 +48,23 @@ section.cart-wrapper {
             border-top: 1px solid #292929;
             border-bottom: 1px solid #292929;
             align-items: center;
-            
             label {
                 margin-right: 1rem;
             }
 
             button {
+                font-weight: 600;
                 background-color: var(--highlight);
                 color: var(--filler);
                 cursor: pointer;
                 border: none;
                  padding: .25rem 1.25rem;
                  min-height: 52px;
-                //  padding: 1em 0.5em;
                 transition: background 180ms ease-in-out;
                 &:hover {
                     background: var(--border);
                 }
             }
-
             button.plus {
                 border-top-right-radius: var(--br);
                 border-bottom-right-radius: var(--br);
@@ -70,7 +73,6 @@ section.cart-wrapper {
                 border-top-left-radius: var(--br);
                 border-bottom-left-radius: var(--br);
             }
-
             p {
                 padding: .78rem .8rem;
                 font-weight: 600;
@@ -78,7 +80,6 @@ section.cart-wrapper {
                 color: var(--filler);
                 display: flex;
                 align-items: center;
-                // text-align: right;
             }
 
         }
@@ -91,14 +92,15 @@ section.cart-wrapper {
             label {
                 display: block;
                 width: 100%;
-                margin: 1.6rem;
+                margin: 5rem 1rem;
                 padding: .5em;
                 border: 1px solid #393939;
                 font-size: 1.2em;
                 border-radius: 4px;
             }
             button {
-                margin: 1.7rem 0;
+                margin: 5rem 1rem;
+                font-weight: 600;
                 width: 50%;
                 padding: 1em 0.5em;
                 background-color: #D10061;
@@ -109,7 +111,6 @@ section.cart-wrapper {
                     color: white;
                 }
                 &:hover {
-                    // animation: textHover 180ms forwards ease-in-out;
                     background-color: hsl(332, 100%, 51%);
                     color: #ffF;
                 }
@@ -117,7 +118,9 @@ section.cart-wrapper {
         }
     }
     .clear {
+        font-weight: 600;
         margin-bottom: 1em;
+        margin-top: .7rem;
         width: 100%;
         padding: 1em 0.5em;
         background-color: #D10061;
@@ -125,13 +128,12 @@ section.cart-wrapper {
         border: none;
         transition: all 180ms ease-in-out;
         &:hover {
-            // animation: textHover 180ms forwards ease-in-out;
             background-color: hsl(332, 100%, 51%);
             color: #ffF;
         }
     }
-
     .kassen {
+        font-weight: 600;
         color: #292929;
         font-size: 0.8rem;
         cursor: pointer;
@@ -139,14 +141,11 @@ section.cart-wrapper {
         border: none;
         border-radius: var(--br);
         padding: 1em 1.7em;
-        // width: 10%;
         transition: background 180ms ease-in-out;
         &:hover {
         background: #00c792;
         }
-        
     }
-
     section.total {
         position: relative;
         .texts {

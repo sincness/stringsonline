@@ -1,0 +1,25 @@
+.score{
+
+
+    div {
+        display: flex;
+        gap: .5rem;
+    }
+    
+    &.clickable {
+        span {
+            cursor: pointer;
+            color: orange;
+            &:hover ~ span {
+                color: #fff;
+            }
+        }
+    }
+
+    span {
+        color: orange;
+        // &:hover ~ span {
+        //     color: #fff;
+        // }
+    }
+}

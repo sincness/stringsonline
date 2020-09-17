@@ -33,7 +33,10 @@ export class HistorikComponent implements OnInit {
    * @param timestamp Unix Timestamp
    */
   timestampDate(timestamp) {
-    return new Date(timestamp * 1000).toLocaleDateString('da-dk', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' });
+    return new Date(timestamp * 1000).toLocaleDateString('da-dk', { year: 'numeric', month: 'long', day: 'numeric'});
   }
 
+  toFixed(n) {
+    return Number(+n).toFixed();
+  }
 }

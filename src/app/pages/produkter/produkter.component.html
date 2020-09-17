@@ -1,7 +1,12 @@
+<!-- <breadcrumb *ngIf="product && seg !== 'søg'" [crumbs]="[{ place: 'produkter', url: '/'}, { place: title, url: '/produkter/' + title + '/' + type}]"></breadcrumb> -->
+<!-- <breadcrumb *ngIf="product && seg !== 'søg'" [crumbs]="[{ place: 'produkter', url: '/'}, { place: title, url: '/produkter/' + title + '/' + type}]"></breadcrumb> -->
+<breadcrumb *ngIf="products" [crumbs]="[{ place: 'produkter', url: '/'},{place: tid, url: '/produkter/' + tid + '/' + id}]"></breadcrumb>
+
 <section *ngIf="products">
     <section class="sort-controls">
         <select (change)="changeProducent($event)" name="producent" id="producent" *ngIf="http.brands$ | async as brands">
             <option hidden selected>Producent</option>
+            <option value="null">Vis alle</option>
           <option *ngFor="let item of brands" [value]="item.title">{{item.title}}</option>
         </select>
         <select (change)="onChange($event)" name="sort" id="sort">
@@ -13,6 +18,6 @@
         </select>
     </section>
 
-    <card *ngFor="let item of products" [id]="item.id" [description]="item.description_short" [price]="item.price" [stock]="item.stock" [image]="item.image_fullpath" [name]="item.name"></card>
+    <card *ngFor="let item of products" [id]="item.id" [description]="item.description_short" [price]="item.price" [stock]="item.stock" [image]="item.image_fullpath" [name]="item.name" [url]="id"></card>
 </section>
 <h2 *ngIf="!products || products <= 0">Varen findes ikke</h2>

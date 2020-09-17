@@ -20,6 +20,8 @@ export class BrandsComponent implements OnInit {
     this.data = await this.http.getBrand(this.id).toPromise();
     this.brand = await this.data.item.products;
     this.data = this.data.item;
+    console.log(this.data);
+    
     this.title = `${this.data.title} ${this.route.snapshot.data.title}`;
     this.TitleService.setTitle(this.title);
 

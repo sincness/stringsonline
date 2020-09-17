@@ -31,8 +31,10 @@ section {
         display: grid;
         grid-template-columns: 1fr 60% 40%;
         gap: 2rem;
-        // padding: 2rem 0;
-        // padding: 2rem 0;
+        @media (max-width: 1000px ) {
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
 
         figure {
             position: relative;
@@ -46,10 +48,17 @@ section {
                 left: 50%;
                 width: 80%;
                 transform: translate(-50%, -50%);
+                
             }
         }
         figcaption {
             padding: 2rem 0 6rem;
+            h2 {
+                margin-bottom: .5rem;
+            }
+            @media (max-width: 1000px ) {
+                width: 80%;
+            }
         }
     }
 }

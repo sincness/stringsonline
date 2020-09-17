@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieService } from './cookie.service';
-import { Subject, BehaviorSubject, Observable, Subscriber } from 'rxjs';
+import { Subject } from 'rxjs';
 
 interface Cart {
   products: Array<Product>;
@@ -47,6 +47,9 @@ export class CartService {
     }
   }
   
+  subjectUpdate() {
+    this.cartSubject.next('change');
+  }
 
   getAll() {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.cookie.get('token')}`);
@@ -57,7 +60,6 @@ export class CartService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.cookie.get('token')}`);
     this.http.patch('https://api.mediehuset.net/stringsonline/cart', body, { headers }).subscribe(res => {
       console.log(res);
-      
       this.cartSubject.next('added');
     })
   
@@ -66,7 +68,6 @@ export class CartService {
   patchAdd(product_id: string, amount: string) {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.cookie.get('token')}`);
     const value = +amount + 1;
-    
     let body = {
       product_id,
       field: 'quantity',
@@ -108,50 +109,38 @@ export class CartService {
     });
   }
 
-  async postCart(id: string) {
+  async postCart(product_id: string) {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.cookie.get('token')}`);
     // this.cartItems.next([...this.cartItems.getValue(), data]);
     let products: any = await this.getAll().toPromise();
     products = products.cartlines;
     if (products === undefined) {
-      console.log('den er ikke undefined');
-      
       const product = {
-        product_id: id,
+        product_id,
         quantity: 1
       }
       await this.http.post<any>('https://api.mediehuset.net/stringsonline/cart', product, { headers }).subscribe(res => {
-        console.log(res);
-        
         if(res.status) this.cartSubject.next('added');  
       });
-      console.log('test1');
       
     } else {
-      console.log('test2');
-      const check = products.some(e => e.product_id === id);
+      const check = products.some(e => e.product_id === product_id);
       if (check) {
-        console.log('test3');
           for (const iterator of products) {
-            if (iterator.product_id === id) {
-              console.log('test4');
-              
-              let test: string | number = +iterator.quantity +1;
-              test = test.toString();
-  
+            if (iterator.product_id === product_id) {
+              let value: string | number = +iterator.quantity +1;
+              value = value.toString();
               const body = {
-                product_id: id,
+                product_id,
                 field: 'quantity',
-                value: test
+                value
               };
-              console.log(body);
-              
               await this.patch(body)
             }
           }
         } else {
           const product = {
-            product_id: id,
+            product_id,
             quantity: 1
           }
           await this.http.post<any>('https://api.mediehuset.net/stringsonline/cart', product, { headers }).subscribe(res => {
@@ -159,10 +148,61 @@ export class CartService {
           });
         }
     }
-
+  }
+  async postQuantityCart(product_id: string, newValue: string) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.cookie.get('token')}`);
+    // this.cartItems.next([...this.cartItems.getValue(), data]);
+    let products: any = await this.getAll().toPromise();
+    products = products.cartlines;
+    if (products === undefined) {
+      const product = {
+        product_id,
+        quantity: 1
+      }
+      await this.http.post<any>('https://api.mediehuset.net/stringsonline/cart', product, { headers }).subscribe(res => {
+        if(res.status) this.cartSubject.next('added');  
+      });
       
+    } else {
+      const check = products.some(e => e.product_id === product_id);
+      if (check) {
+          for (const iterator of products) {
+            if (iterator.product_id === product_id) {
 
-    
+              if(+newValue === 1) {
+                let value: string | number = +iterator.quantity +1;
+                value = value.toString();
+                const body = {
+                  product_id,
+                  field: 'quantity',
+                  value
+                };
+                await this.patch(body)
+              } else {
+                let value: string | number = +iterator.quantity + +newValue;
+                value = value.toString();
+                
+                const body = {
+                  product_id,
+                  field: 'quantity',
+                  value
+                };
+                console.log(body);
+                await this.patch(body)
+              }
+              
+            }
+          }
+        } else {
+          const product = {
+            product_id,
+            quantity: 1
+          }
+          await this.http.post<any>('https://api.mediehuset.net/stringsonline/cart', product, { headers }).subscribe(res => {
+            if(res.status) this.cartSubject.next('added');  
+          });
+        }
+    }
   }
 
 }

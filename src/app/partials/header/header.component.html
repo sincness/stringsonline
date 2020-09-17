@@ -1,8 +1,9 @@
-<header>
- <nav>
+<header class="desktop">
+  <!-- <span (click)="menuOpen = !menuOpen; menu()" #icon class="material-icons">menu</span> -->
+ <nav #toolbar id="toolbar">
   <section class="guitar-nav">
     <figure>
-      <img src="../../../assets/svg/logo.svg" alt="" draggable="false">
+      <img routerLink="/forside" src="../../../assets/svg/logo.svg" alt="Logo" draggable="false">
     </figure>
     <ul>
       <li><a routerLink="/">Forside</a></li>
@@ -23,7 +24,7 @@
         <label>+45 98 12 22 68</label>
       </article>
 
-      <span routerLink="/kurv" class="material-icons cart">shopping_cart <span #quantity class="badge">{{items}}</span></span>
+      <span routerLink="/indkøbskurv" class="material-icons cart">shopping_cart <span *ngIf="auth.online" #quantity class="badge">{{items}}</span></span>
     </section>
 
     <form [formGroup]="search">
@@ -43,7 +44,19 @@
   </section> -->
 </nav>
 
+</header>
 
+<header class="mobile" id="side-header">
+  <span (click)="menuOpen = !menuOpen; menu()" #icon class="material-icons icon">menu</span>
+  <nav #sideToolbar id="side-toolbar">
+    <ul>
+      <li><a (click)="menuOpen = !menuOpen; menu()" routerLink="/">Forside</a></li>
+      <li><a (click)="menuOpen = !menuOpen; menu()" routerLink="/vilkår">Salgs- og handelsbetingelser</a></li>
+      <li *ngIf="!auth.online"><button class="cta" (click)="menuOpen = !menuOpen; menu()"  routerLink="/login">Log ind</button></li>
+      <li *ngIf="auth.online"><a (click)="menuOpen = !menuOpen; menu()" routerLink="/ordrehistorik">Ordrehistorik</a></li>
+      <li *ngIf="auth.online"><button class="cta" (click)="auth.logout();menuOpen = !menuOpen; menu()">Log ud</button></li>
+    </ul>
+  </nav>
 </header>
 
 

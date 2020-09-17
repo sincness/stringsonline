@@ -7,6 +7,17 @@ $checked-color: orange;
     display: grid;
     grid-template-columns: 20% 1fr 20%;
     gap: 1em;
+    @media (max-width: 1115px) {
+        grid-template-columns: 1fr;
+        gap: 0;
+        .product-details-images, .product-details-middle { 
+            border-right: 1px solid #292929;
+            border-left: 1px solid #292929;
+        }
+        .product-details-middle {
+            padding: 2rem;
+        }
+    }
     .product-details-images, .product-brand-rating {
         figure {
             width: 100%;
@@ -18,88 +29,65 @@ $checked-color: orange;
         }
       
     }
-    .product-details-midle {
+    
+    .product-details-middle {
+        
         p {
             margin-top: 1em;
+        }
+        rating {
+            display: block;
+            margin: 1rem 0;
+        }
+        h3 {
+            margin: 2rem 0 1rem;
         }
     }
     .product-brand-rating {
         h3 {
             font-weight: 300;
-        }
-        button {
-            margin-bottom: 1em;
-            width: 100%;
-            padding: 1em .5em;
-            background-color: #D10061;
+            padding: 0.6em 0.5em;
+            text-align: center;
+            background-color: var(--filler);
+            border: 1px solid var(--highlight);
             border-radius: var(--br);
-            border: none;
-            transition: all 180ms ease-in-out;
-            // transition: textHover 180ms ease-in-out;
-            &:hover {
-                // animation: textHover 180ms forwards ease-in-out;
-                background-color: hsl(332, 100%, 51%);
-                color: #ffF;
+            margin: 1rem 0;
+        }
+        section.cart {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 1em;
+            // input {
+
+            // }
+            button {
+                width: 100%;
+                padding: 1em .5em;
+                background-color: #D10061;
+                border-top-right-radius: var(--br);
+                border-bottom-right-radius: var(--br);
+                border: none;
+                transition: all 180ms ease-in-out;
+                &:hover {
+                    // animation: textHover 180ms forwards ease-in-out;
+                    background-color: hsl(332, 100%, 51%);
+                    color: #ffF;
+                }
             }
         }
-        section.rating {
-            font-size: 2rem;
-            .star-cb-group {
-            /* remove inline-block whitespace */
-            * {
-                font-size: 2rem;
-            }
-            /* flip the order so we can use the + and ~ combinators */
-            unicode-bidi: bidi-override;
-            direction: rtl;
-            & > input {
-                display: none;
-                & + label {
-                /* only enough room for the star */
-                display: inline-block;
-                overflow: hidden;
-                text-indent: 9999px;
-                width: 1em;
-                white-space: nowrap;
-                cursor: pointer;
-                &:before {
-                    display: inline-block;
-                    text-indent: -9999px;
-                    content: $unchecked-star;
-                    color: $unchecked-color;
-                }
-                }
-                &:checked ~ label:before,
-                & + label:hover ~ label:before,
-                & + label:hover:before {
-                content: $checked-star;
-                color: #e52;
-                text-shadow: 0 0 1px #333;
-                }
-            }
-            
-            /* the hidden clearer */
-            & > .star-cb-clear + label {
-                text-indent: -9999px;
-                width: .5em;
-                margin-left: -.5em;
-            }
-            & > .star-cb-clear + label:before {
-                width: .5em;
-            }
+        rating {
+            color: #fff;
+        }
 
-            &:hover > input + label:before {
-                content: $unchecked-star;
-                color: $unchecked-color;
-                text-shadow: none;
-            }
-            &:hover > input + label:hover ~ label:before,
-            &:hover > input + label:hover:before {
-                content: $checked-star;
-                color: $checked-color;
-                text-shadow: 0 0 1px #333;
-            }
-            } 
+        p.stock {
+            margin: 1rem 0;
+        }
+        span {
+            display: block;
+            margin: 0 0 1rem;
+            cursor: pointer;
+            font-size: .8rem;
+            color: #ef3333;
         }
     }
 }

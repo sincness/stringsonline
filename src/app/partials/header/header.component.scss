@@ -1,9 +1,27 @@
+header.desktop {
+    margin-bottom: 8rem;
+
+    @media (max-width: 1115px) {
+        display: none;
+        
+    }
+}
+header.mobile {
+    span.icon {
+        position: absolute;
+        right: 5%;
+        top: 1rem;
+    }
+    @media (min-width: 1115px) {
+        display: none;
+    }
+}
+
+
 header {
     padding: 2rem 0;
-    margin-bottom: 8rem;
-    height: 6.25rem;
 
-    nav {
+    nav#toolbar {
         width: 80%;
         height: 60px;
         margin: 0 auto;
@@ -11,8 +29,11 @@ header {
         color: #000;
 
         .guitar-nav {
-            display: inline-block;
+            // display: inline-block;
             width: 68%;
+            @media (max-width: 1620px) {
+                width: 100%;
+            }
             min-height: 111px;
             margin-right: 1rem;
             figure {
@@ -36,16 +57,22 @@ header {
                 justify-content: flex-end;
                 flex-direction: row;
                 gap: 3rem;
+                @media (max-width: 1620px) {
+                    width: 75%;
+                }
         
             }
         }
 
         .infos {
-            // margin: 2rem 0 0 auto;
-            display: inline-block;
-            width: 30%;
             position: absolute;
+            width: 30%;
             right: 3%;
+            @media (max-width: 1620px) {
+                width: 100%;
+                position: unset;
+                right: unset;
+            }
 
             .contact {
                 display: flex;
@@ -109,22 +136,59 @@ header {
 
     }
 
-    // .breadcrumb {
-    //     border-top: 1px solid #393939;
-    //     border-bottom: 1px solid #393939;
-    //     padding: .5rem 0;
-    //     margin: 1rem 0;
+}
 
-    //     a {
-    //         display: inline-flex;
-    //         align-items: center;
-    //         color: var(--highlight);
-    //         span {
-    //             padding-right: .25rem;
-    //             color: var(--highlight);
-    //         }
-    //     }
-    // }
-
-
+header.mobile {
+    span {
+        cursor: pointer;
+        display: block;
+        margin-right: auto;
+        color:var(--highlight);
+        transition: color 180ms ease-in-out;
+        font-size: 2rem;
+        &:hover {
+            color:var(--border);
+        }
+    }
+    #side-toolbar {
+        user-select: none;
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 6;
+        top: 0;
+        left: 0;
+        // border-right: .5px solid var(--border);
+        background-color: #111;
+        opacity: .98; // Kan slåes fra, altså ikke nødvendig
+        overflow-x: hidden;
+        padding-top: 60px;
+        transition: .5s;
+    
+    
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 0 2rem;
+            // align-items: center;
+    
+            li {
+    
+                a {
+                white-space: nowrap;
+                padding: .25rem;
+                text-decoration: none;
+                font-size: 1rem;
+                display: block;
+                color:var(--highlight);
+                transition: color 180ms ease-in-out;
+    
+                    &:hover {
+                        color:var(--border);
+                    }
+                }
+            }
+        }
+    }
 }

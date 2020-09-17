@@ -1,1 +1,46 @@
-<p>tak works!</p>
+<breadcrumb [crumbs]="[{ place: 'Indkøbskurv', url: '/indkøbskurv'},{place: 'Kassen', url: '/kassen'}, {place: 'Ordrebekræftelse', url: '/'}]"></breadcrumb>
+<section class="orderConfirmation-container" *ngIf="order">
+    <section class="order-information">
+        <h1>TAK FOR DIN BESTILLING</h1>
+        <article>
+            <div class="border-bottom border-first">
+                <p>Ordrenr. </p>
+                <p>{{order.id}}</p>
+            </div>
+            <div class="border-bottom produckts">
+                <p>Produkt </p>
+                <div *ngFor="let item of order.orderlines">
+                    <p class="highlight"> {{item.name}}</p>
+                    <p>{{item.quantity}} Stk.</p>
+                    <p class="produckts-total">DKK {{toFixed(item.price)}}</p>
+                </div>
+            </div>
+            <div class="border-bottom grid">
+                <p>Moms </p>
+                <p class="end">DKK {{+order.total * 0.20}}</p>
+            </div>
+            <div class="border-bottom grid">
+                <p>I alt </p>
+                <p class="end">DKK {{toFixed(order.total)}}</p>
+            </div>
+            <button routerLink="/ordrehistorik">Gå til ordrehistorik</button>
+
+        </article>
+    </section>
+    <section *ngIf="order" class="shipping">
+        <h2>Faktureringsadresse</h2>
+        <p>{{order.firstname}} {{order.lastname}}</p>
+        <p>{{order.address}}</p>
+        <div>
+            <p>{{order.zipcode}}</p>
+            <p>{{order.city}}</p>
+        </div>
+        <h2 class="margin-top">Leveringsadresse</h2>
+        <p>{{order.firstname}} {{order.lastname}}</p>
+        <p>{{order.delivery_address}}</p>
+        <div>
+            <p>{{order.delivery_zipcode}}</p>
+            <p>{{order.delivery_city}}</p>
+        </div>
+    </section>
+</section>

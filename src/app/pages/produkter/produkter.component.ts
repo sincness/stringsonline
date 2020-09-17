@@ -14,12 +14,15 @@ export class ProdukterComponent implements OnInit {
   data;
   products;
   id = this.route.snapshot.params.id;
+  tid = this.route.snapshot.params.title;
+  // typeid = this.route.snapshot.params.tdypeid;
   title;
 
 
   constructor(public http: HttpService, private route: ActivatedRoute, private TitleService: Title, private router: Router) { }
 
   async ngOnInit() {
+    
     this.data = await this.http.getProductsGroup(this.id).toPromise();
     this.products = this.data.group.products;
     this.data = this.data.group;
@@ -49,6 +52,11 @@ export class ProdukterComponent implements OnInit {
         }
       }
       this.products = array;
+      if (e.target.value === 'null') {
+        this.data = await this.http.getProductsGroup(this.id).toPromise();
+        this.products = this.data.group.products;
+        this.data = this.data.group;
+      }
     }
 
     // Change event binding til at differentiere metoderne til at sortere

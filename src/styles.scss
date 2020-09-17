@@ -20,12 +20,12 @@
 
 /* Track */
 &::-webkit-scrollbar-track {
-    background: var(--input-fill);
+    background: var(--filler);
 }
 
 /* Handle */
 &::-webkit-scrollbar-thumb {
-    background: var(--border-color);
+    background: var(--border);
     border-radius: 2px;
 }
 
@@ -49,6 +49,7 @@
 body {
   background-color: #131313;
 }
+
 
 h1, 
 h2, 
@@ -92,7 +93,7 @@ cursor: pointer;
 
 button {
   cursor: pointer;
-  color: #000;
+  color: #fff;
   span {
     color: #000;
   }
@@ -105,10 +106,12 @@ input {
   color: #000;
 }
 
-app-produkter, app-historik, app-kurv, app-brands {
+app-produkter, app-historik, app-kurv, app-brands, app-tak, app-result, app-login, app-fejl {
   width: 100%;
 }
-
+consent {
+  width: 110%;
+}
 .wiggle {
   animation: wriggle 180ms ease-in-out forwards;
 }

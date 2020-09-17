@@ -7,15 +7,15 @@
 
     <header>
         <h3>{{ name }}</h3>
-        <p>{{ description }}<a class="readmore" [hidden]="check" routerLink="/produkt/{{title}}/{{name}}/{{id}}">Læs mere</a></p>
-        <p>{{ description }}<a class="readmore" [hidden]="!check" routerLink="/produkt/søg/{{id}}">Læs mere</a></p>
+        <p *ngIf="!check && !check2">{{ description }}<a class="readmore" routerLink="/produkt/{{title}}/{{url}}/{{id}}">Læs mere</a></p>
+        <p *ngIf="check && !check2">{{ description }}<a class="readmore" routerLink="/produkt/søg/{{id}}">Læs mere</a></p>
+        <p *ngIf="check2 && !check">{{ description }}<a class="readmore" routerLink="/produkt/brand/{{id}}">Læs mere</a></p>
     </header>
 
     <section>
-        <label>Pris: DKK {{ price }}</label>
-        <button (click)="addProduct(id)">Læg i kurv</button>
-        <p *ngIf="(stock > 0)">{{ stock }} på lager</p>
-        <p *ngIf="(stock <= 0)">Varen er ikke på lager</p>
+        <label>Pris: DKK {{ toFixed(price) }}</label>
+        <button *ngIf="auth.online" (click)="addProduct(id)">Læg i kurv</button>
+        <p>{{+stock <= 0 ? 'Varen er ikke' : +stock > 1 ? +stock -1 + '+' : +stock}} på lager</p>
     </section>
 
 </article>

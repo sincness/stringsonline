@@ -1,54 +1,82 @@
+<breadcrumb [crumbs]="[{ place: 'Indkøbskurv', url: '/indkøbskurv'},{ place: 'Kassen', url: '/kassen'}]"></breadcrumb>
+
 <h1>Kassen</h1>
-<form class="order" [formGroup]="order">
+<form class="order" [formGroup]="order" (ngSubmit)="submit()">
     <section>
         <h2>Fakturerings- & leveringsadresse</h2>
         <div class="input-container">
-            <label for="firstname">Fornavn <span *ngIf="f.firstname.invalid" class="red">*</span><span class="check" *ngIf="f.firstname.valid && !f.firstname.invalid"><i class="fas fa-check"></i></span></label>
-            <input type="text" formControlName="firstname" name="firstname">
-        </div>
-        <div class="input-container">
-            <label for="lastname">Efternavn <span *ngIf="f.lastname.invalid" class="red">*</span><span class="check" *ngIf="f.lastname.valid && !f.lastname.invalid"><i class="fas fa-check"></i></span></label>
-            <input type="text" formControlName="lastname" name="lastname">
-        </div>
-        <div class="input-container">
-            <label for="address">Gade/vej og husnummer <span *ngIf="f.address.invalid" class="red">*</span><span class="check" *ngIf="f.address.valid && !f.address.invalid"><i class="fas fa-check"></i></span></label>
-            <input type="text" formControlName="address" name="address">
-        </div>
-        <div class="input-container">
-            
-            <label for="zipcode">Postnummer <span *ngIf="f.zipcode.invalid" class="red">*</span><span class="check" *ngIf="f.zipcode.valid && !f.zipcode.invalid"><i class="fas fa-check"></i></span></label>
-            <input type="text" formControlName="zipcode" name="zipcode">
-        </div>
-
-        <div class="input-container">
-            <label for="city">By <span *ngIf="f.city.invalid" class="red">*</span><span class="check" *ngIf="f.city.valid && !f.city.invalid"><i class="fas fa-check"></i></span></label>
-            <input type="text" formControlName="city" name="city">
-        </div>
-
+            <label for="firstname">Fornavn <span *ngIf="f.firstname.invalid" class="denied">*</span><span class="check" *ngIf="f.firstname.valid && !f.firstname.invalid"><i class="fas fa-check"></i></span></label>
+            <input type="text" formControlName="firstname" name="firstname" id="firstname" placeholder="Indtast dit fornavn..">
+            <p *ngIf="!f.firstname.valid && f.firstname.touched" class="help">Udfyld venligst dit fulde navn..</p>
         
+        </div>
+        <div class="input-container">
+            <label for="lastname">Efternavn <span *ngIf="f.lastname.invalid" class="denied">*</span><span class="check" *ngIf="f.lastname.valid && !f.lastname.invalid"><i class="fas fa-check"></i></span></label>
+            <input type="text" formControlName="lastname" name="lastname" id="lastname" placeholder="Indtast dit efternavn..">
+            <p *ngIf="!f.lastname.valid && f.lastname.touched" class="help">Udfyld venligst dit efternavn..</p>
+        </div>
+        <div class="input-container">
+            <label for="street">Gade/vej og husnummer <span *ngIf="f.street.invalid" class="denied">*</span><span class="check" *ngIf="f.street.valid && !f.street.invalid"><i class="fas fa-check"></i></span></label>
+            <input type="text" formControlName="street" name="street" id="street" placeholder="Indtast din adresse..">
+            <p *ngIf="!f.street.valid && f.street.touched" class="help">Udfyld venligst din adresse..</p>
+        
+        </div>
+        <div class="input-container">
+            <label for="zipcode">Postnummer <span *ngIf="f.zipcode.invalid" class="denied">*</span><span class="check" *ngIf="f.zipcode.valid && !f.zipcode.invalid"><i class="fas fa-check"></i></span></label>
+            <input type="text" formControlName="zipcode" name="zipcode" id="zipcode" placeholder="Indtast dit postnummer..">
+            <p *ngIf="!f.zipcode.valid && f.zipcode.touched" class="help">Udfyld venligst din adresse..</p>
+            
+        </div>
+
+        <div class="input-container">
+            <label for="city">By <span *ngIf="f.city.invalid" class="denied">*</span><span class="check" *ngIf="f.city.valid && !f.city.invalid"><i class="fas fa-check"></i></span></label>
+            <input type="text" formControlName="city" name="city" id="city" placeholder="Indtast din by..">
+            <p *ngIf="!f.city.valid && f.city.touched" class="help">Udfyld venligst dit by navn..</p>
+
+        </div>
+
+        <div class="otherShippingaddress" (click)="displayOther($event)">
+            <input type="checkbox" formControlName="otherShippingaddress" id="otherShippingaddress">
+            <label for="otherShippingaddress">Anden leveringsadresse</label>
+        </div>
+
+        <section class="otherAddress" style="display:none" #other>
+            <label for="otherstreet">Leveringsadresse</label>
+            <input type="text" placeholder="Gade/Vej og husnummer" formControlName="otherstreet">
+            <div>
+                <label for="otherstreet">Leveringspostnummer</label>
+                <input type="number" placeholder="Postnr" formControlName="otherzipcode">
+
+                <label for="otherstreet">Leveringsby</label>
+                <input type="text" placeholder="By" formControlName="othercity">
+            </div>
+        </section>
     </section>
     <section>
         <h2>Email & telefon</h2>
 
         <div class="input-container">
-            <label for="email">E-mail <span *ngIf="f.email.invalid" class="red">*</span><span class="check" *ngIf="f.email.valid && !f.email.invalid"><i class="fas fa-check"></i></span></label>
-            <input type="email" formControlName="email" name="email">
+            <label for="email">E-mail <span *ngIf="f.email.invalid" class="denied">*</span><span class="check" *ngIf="f.email.valid && !f.email.invalid"><i class="fas fa-check"></i></span></label>
+            <input type="email" formControlName="email" name="email" id="email" placeholder="Indtast dit email..">
         </div>
 
         <div class="input-phone">
-
-            <label for="phone">Telefon <span *ngIf="f.phone.invalid" class="red">*</span><span class="check" *ngIf="f.phone.valid && !f.phone.invalid"><i class="fas fa-check"></i></span></label>
-            <input type="text" formControlName="phone" name="phone">
+            <label for="phone">Telefon <span *ngIf="f.phone.invalid" class="denied">*</span><span class="check" *ngIf="f.phone.valid && !f.phone.invalid"><i class="fas fa-check"></i></span></label>
+            <input type="text" formControlName="phone" name="phone" id="phone" placeholder="Indtast dit telefonnummer, det er valgfrit..">
         </div>
 
 
         
     </section>
-    <section class="payment">
+    <!-- <section class="payment">
         <h2>Betalingsmetode</h2>
-        <div class="radio-container">
-            <input type="radio" id="bank">
+        <div class="radio-container" (click)="display($event)">
+            <input type="radio" value="1" formControlName="payment" id="bank">
             <label for="bank">Bankoverførsel</label>
+        </div>
+        <div #bank class="input-bank">
+            <input type="text" placeholder="REG.NR">
+            <input type="text" placeholder="KONTONR">
         </div>
         <div class="radio-container">
             <details id="vcc">
@@ -82,8 +110,58 @@
             </details>
         
         </div>
-        <!-- <label for="comment">Kommentar</label>
-        <textarea formControlName="comment" name="comment"></textarea> -->
         <button type="button" class="cta" (click)="submit()">BETAL</button>
+    </section> -->
+    <section class="payment">
+        <h2>BetalingsMetode</h2>
+        <section class="payment-wrapper">
+            <div class="payment-container" id="bankCheck">
+                <div class="payment-input" (click)="display($event)">
+                    <input type="radio" value="1" formControlName="payment" id="bank">
+                    <label for="bank">Bankoverførsel</label>
+                </div>
+                <div #bank class="payment-input-bank">
+                    <div class="input-container">
+                        <label for="reg">Registreringsnummer</label>
+                        <input id="reg" type="text" placeholder="Indtast dit registreringsnummer..">
+                    </div>
+                    <div class="input-container">
+                        <label for="account">Kontonummer</label>
+                        <input id="account" type="text" placeholder="Indtast dit kontonummer..">
+                    </div>
+                </div>
+            </div>
+            <div class="payment-container" id="cardCheck">
+                <div class="payment-input" (click)="display($event)">
+                    <input type="radio" value="2" formControlName="payment" id="card">
+                    <label for="card">Kreditkort (MasterCard, VISA)</label>
+                </div>
+                <div #creditcard class="payment-input-bank">
+                    <div class="input-container">
+                        <label for="cardNumber">Kortnummer</label>
+                        <input id="cardNumber" type="text" placeholder="Indtast dit kortnummer.." formControlName="cardNumber">
+                    </div>
+                    <div>
+                        <div class="input container">
+                            <label for="month">Måned</label>
+                            <input type="number" placeholder="Indtast måned.." formControlName="month">
+                        </div>
+                        <div class="input-container">
+                            <label for="year">År</label>
+                            <input type="number" placeholder="Indtast år.." formControlName="year">
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <label for="ctr">Kontrolcifre</label>
+                        <input type="text" placeholder="Indtast kontrolcifre.." formControlName="ctr">
+                    </div>
+                    <div class="input-container">
+                        <label for="cardHolderName">Kortets indehaver</label>
+                        <input type="text" placeholder="Indtast kortets indehaver.." formControlName="cardHolderName">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <button [disabled]="!order.valid">BETAL</button>
     </section>
 </form>

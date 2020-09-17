@@ -1,3 +1,6 @@
+<breadcrumb *ngIf="product && seg !== 'søg'" [crumbs]="[{ place: 'produkter', url: '/'}, { place: title, url: '/produkter/' + title + '/' + type},{place: product.name, url: '/produkt/' + title + '/' + type + '/' + product.id}]"></breadcrumb>
+<breadcrumb *ngIf="product && seg === 'søg'" [crumbs]="[{ place: 'søg', url: '/søg'}]"></breadcrumb>
+
 <section class="product-details-container" *ngIf="product">
     <article class="product-details-images">
         <figure>
@@ -7,25 +10,24 @@
             <img src="{{item.fullpath}}" alt="{{product.name}} image">
         </figure>
     </article>
-    <article class="product-details-midle" *ngIf="product">
+    <article class="product-details-middle" *ngIf="product">
         <h2>{{product.name}}</h2>
         <p>{{product.description_long}}</p>
+        <h3>Gennemsnitsvurderingen af produktet</h3>
+        <p>{{average}}</p>
+        <rating *ngIf="average !== undefined" [score]="round(average)" [forDisplay]="true"></rating>
     </article>
     <article class="product-brand-rating">
         <figure><img src="{{product.brand_image}}" alt="{{product.brand_image}}"></figure>
-        <h3>DKK {{product.price}}</h3>
-        <button (click)="addProduct(product.id)">Læg i kurv</button>
-        <p>antal på lager</p>
-        <section class="rating">
-            <span class="star-cb-group">
-                <input type="radio" id="rating-5" value="5" /><label for="rating-5">5</label>
-                <input type="radio" id="rating-4" value="4" /><label for="rating-4">4</label>
-                <input type="radio" id="rating-3" value="3" /><label for="rating-3">3</label>
-                <input type="radio" id="rating-2" value="2" /><label for="rating-2">2</label>
-                <input type="radio" id="rating-1" value="1" /><label for="rating-1">1</label>
-    
-            </span>
+        <h3>Pris: DKK {{toFixed(product.price)}}</h3>
+        <section *ngIf="auth.online" class="cart">
+            <input #quantity type="number" value="1" min="1" [max]="product.stock">
+            <button (click)="addProduct(product.id, quantity.value)">Læg i kurv</button>
         </section>
-        <span class="material-icons">star</span>
+        <p>{{score && auth.online ? 'Tak for din anmeldelse' : 'Giv os din anmeldelse'}}</p>
+        <span *ngIf="score && auth.online" (click)="deleteRating()">Slet anmeldelsen</span>
+        <rating *ngIf="auth.online" [maxScore]="5" [score]="score" [forDisplay]="false" (rateChanged)="onRateChange($event)"></rating>
+        <p class="stock">{{+product.stock <= 0 ? 'Varen er ikke' : product.stock > 1 ? +product.stock -1 + '+' : +product.stock}} på lager</p>
+
     </article>
 </section>

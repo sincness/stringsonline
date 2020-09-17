@@ -23,12 +23,14 @@ export class LoginComponent implements OnInit {
     this.TitleService.setTitle(this.title);
     
     if (this.auth.currentUserValue) this.router.navigate(['/']);
+
+    
     this.login = this.fb.group({
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
-    console.log(this.form);
+    // console.log(this.form);
   
   }
 
@@ -41,7 +43,9 @@ export class LoginComponent implements OnInit {
     if (this.form.username.value && this.form.password.value) {
       this.auth.login(userdata).pipe( first() ).subscribe( data => {
         this.router.navigate([this.returnUrl]);
-        location.reload();
+        setTimeout(_ => {
+          location.reload();
+        }, 500);
     },
     error => {
         error.statusText === 'Unauthorized' ? this.error = 'Forkerte brugeroplysninger' : this.error = error.statusText;

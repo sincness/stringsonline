@@ -23,6 +23,9 @@ import { ProdukterComponent } from './pages/produkter/produkter.component';
 import { BrandsComponent } from './pages/brands/brands.component';
 import { ProduktComponent } from './pages/produkt/produkt.component';
 import { BreadcrumbComponent } from './partials/breadcrumb/breadcrumb.component';
+import { ConsentComponent } from './partials/consent/consent.component';
+import { CookieDirective } from './partials/consent/cookie.directive';
+import { RatingComponent } from './partials/rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,9 @@ import { BreadcrumbComponent } from './partials/breadcrumb/breadcrumb.component'
     BrandsComponent,
     ProduktComponent,
     BreadcrumbComponent,
+    ConsentComponent,
+    CookieDirective,
+    RatingComponent,
   ],
   imports: [
     BrowserModule,
