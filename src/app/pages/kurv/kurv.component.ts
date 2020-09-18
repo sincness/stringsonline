@@ -15,19 +15,11 @@ export class KurvComponent implements OnInit {
   async ngOnInit() {
     this.products = await this.cart.getAll().toPromise();
     this.products = this.products.cartlines;
-    // this.regulateProducts();
-    // this.cart.getQuantity();
 
     this.cart.currentCart.subscribe(async res => {
       this.products = await this.cart.getAll().toPromise();
       this.products = this.products.cartlines;
       this.calcTotal();
-
-    // this.cart.getQuantity();
-
-      // this.regulateProducts();
-      // this.cart.getLength();
-
     })
     
     

@@ -155,6 +155,7 @@ export class CartService {
     let products: any = await this.getAll().toPromise();
     products = products.cartlines;
     if (products === undefined) {
+      
       const product = {
         product_id,
         quantity: 1
@@ -170,6 +171,7 @@ export class CartService {
             if (iterator.product_id === product_id) {
 
               if(+newValue === 1) {
+
                 let value: string | number = +iterator.quantity +1;
                 value = value.toString();
                 const body = {
@@ -194,6 +196,7 @@ export class CartService {
             }
           }
         } else {
+          
           const product = {
             product_id,
             quantity: 1

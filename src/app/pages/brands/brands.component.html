@@ -12,10 +12,7 @@
     </article>
 
     <section class="sort-controls">
-        <!-- <select name="producent" id="producent" *ngIf="http.brands$ | async as brands">
-            <option hidden selected>Producent</option>
-          <option *ngFor="let item of brands" value="item.id">{{item.title}}</option>
-        </select> -->
+        <label for="sort">Sorter efter..</label>
         <select (change)="onChange($event)" name="sort" id="sort">
           <option hidden selected>Sorter efter..</option>
           <option value="price1">Laveste til højeste pris</option>

@@ -17,9 +17,7 @@ export class ResultComponent implements OnInit {
 
   async ngOnInit() {
     this.TitleService.setTitle(this.title);
-    this.results = await this.http.search(this.keyword).toPromise();
-    // console.log(this.results);
-    
+    this.results = await this.http.search(this.keyword).toPromise();    
   }
 
 

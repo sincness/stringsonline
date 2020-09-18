@@ -110,6 +110,9 @@ header {
                     border: none;
                     border-radius: var(--br);
                     width: 3.75rem;
+                    svg {
+                        color: #111;
+                    }
 
                 }
             }
@@ -120,8 +123,7 @@ header {
                     position: absolute;
                     top: -.5rem;
                     right: -.5rem;
-                    // transform: translate(80%, -180%);
-                    background-color: #f14527;
+                    background-color: #ff4747;
                     border-radius: 50%;
                     font-size: 0.7rem;
                     width: 1rem;

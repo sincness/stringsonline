@@ -40,15 +40,15 @@
             <label for="otherShippingaddress">Anden leveringsadresse</label>
         </div>
 
-        <section class="otherAddress" style="display:none" #other>
+        <section class="other" style="display:none" #other>
             <label for="otherstreet">Leveringsadresse</label>
-            <input type="text" placeholder="Gade/Vej og husnummer" formControlName="otherstreet">
+            <input type="text" placeholder="Gade/Vej og husnummer" formControlName="otherstreet" placeholder="Indtast leveringsadressen..">
             <div>
                 <label for="otherstreet">Leveringspostnummer</label>
-                <input type="number" placeholder="Postnr" formControlName="otherzipcode">
+                <input type="number" placeholder="Postnr" formControlName="otherzipcode" placeholder="Indtast leveringspostnummer..">
 
                 <label for="otherstreet">Leveringsby</label>
-                <input type="text" placeholder="By" formControlName="othercity">
+                <input type="text" placeholder="By" formControlName="othercity" placeholder="Indtast leveringsby..">
             </div>
         </section>
     </section>
@@ -68,50 +68,6 @@
 
         
     </section>
-    <!-- <section class="payment">
-        <h2>Betalingsmetode</h2>
-        <div class="radio-container" (click)="display($event)">
-            <input type="radio" value="1" formControlName="payment" id="bank">
-            <label for="bank">Bankoverførsel</label>
-        </div>
-        <div #bank class="input-bank">
-            <input type="text" placeholder="REG.NR">
-            <input type="text" placeholder="KONTONR">
-        </div>
-        <div class="radio-container">
-            <details id="vcc">
-                <summary>
-                <input type="radio" id="creditcard">
-                <label for="creditcard">Kreditkort (MasterCard, VISA)</label>
-                </summary>
-                    <div class="input-container">
-                        <label for="cardnumber">Kortnummer </label>
-                        <input type="number" id="cardnumber" placeholder="Kortnummer">
-                    </div>
-                    <div class="inputs-container">
-                        <div class="input-container">
-                            <label for="month">Måned </label>
-                            <input type="number" id="month" placeholder="Måned">
-                        </div>
-                        <div class="input-container">
-                            <label for="year">År </label>
-                            <input type="number" id="year" placeholder="År">
-                        </div>
-                    </div>
-                    <div class="input-container">
-                        <label for="cvc">Kontrolcifre</label>
-                        <input type="number" id="cvc" placeholder="Kontrolcifre">
-                    </div>
-                    <div class="input-container">
-                        <label for="owner">Kort indehaver</label>
-                        <input type="text" id="owner" placeholder="Kort indehaver">
-                    </div>
-
-            </details>
-        
-        </div>
-        <button type="button" class="cta" (click)="submit()">BETAL</button>
-    </section> -->
     <section class="payment">
         <h2>BetalingsMetode</h2>
         <section class="payment-wrapper">

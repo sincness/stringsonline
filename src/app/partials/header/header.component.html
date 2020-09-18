@@ -1,5 +1,4 @@
 <header class="desktop">
-  <!-- <span (click)="menuOpen = !menuOpen; menu()" #icon class="material-icons">menu</span> -->
  <nav #toolbar id="toolbar">
   <section class="guitar-nav">
     <figure>
@@ -8,9 +7,9 @@
     <ul>
       <li><a routerLink="/">Forside</a></li>
       <li><a routerLink="/vilkår">Salgs- og handelsbetingelser</a></li>
-      <li *ngIf="!auth.online"><button class="cta" routerLink="/login">Log ind</button></li>
+      <li *ngIf="!auth.online"><button class="call-to-action" routerLink="/login">Log ind</button></li>
       <li *ngIf="auth.online"><a routerLink="/ordrehistorik">Ordrehistorik</a></li>
-      <li *ngIf="auth.online"><button class="cta" (click)="auth.logout()">Log ud</button></li>
+      <li *ngIf="auth.online"><button class="call-to-action" (click)="auth.logout()">Log ud</button></li>
     </ul>
   </section>
   <section class="infos">
@@ -28,23 +27,17 @@
     </section>
 
     <form [formGroup]="search">
-
-      <input formControlName="keyword" type="text" placeholder="Indtast søgeord">
-      <button (click)="submit()" class="cta"><span (click)="submit()" class="material-icons">arrow_right_alt</span></button>
+      <input id="keyword" formControlName="keyword" type="text" placeholder="Indtast søgeord">
+      <button (click)="submit()" class="call-to-action"><i class="fas fa-arrow-right"></i></button>
     </form>
 
 
-  </section>
-  <!-- <breadcrumb></breadcrumb> -->
-<!-- <section class="breadcrumb">
-    <a routerLink="/">
-      <span class="material-icons">home</span> Forside
-    </a>
-    
-  </section> -->
-</nav>
-
+    </section>
+  </nav>
 </header>
+
+
+
 
 <header class="mobile" id="side-header">
   <span (click)="menuOpen = !menuOpen; menu()" #icon class="material-icons icon">menu</span>
@@ -52,9 +45,9 @@
     <ul>
       <li><a (click)="menuOpen = !menuOpen; menu()" routerLink="/">Forside</a></li>
       <li><a (click)="menuOpen = !menuOpen; menu()" routerLink="/vilkår">Salgs- og handelsbetingelser</a></li>
-      <li *ngIf="!auth.online"><button class="cta" (click)="menuOpen = !menuOpen; menu()"  routerLink="/login">Log ind</button></li>
+      <li *ngIf="!auth.online"><button class="call-to-action" (click)="menuOpen = !menuOpen; menu()"  routerLink="/login">Log ind</button></li>
       <li *ngIf="auth.online"><a (click)="menuOpen = !menuOpen; menu()" routerLink="/ordrehistorik">Ordrehistorik</a></li>
-      <li *ngIf="auth.online"><button class="cta" (click)="auth.logout();menuOpen = !menuOpen; menu()">Log ud</button></li>
+      <li *ngIf="auth.online"><button class="call-to-action" (click)="auth.logout();menuOpen = !menuOpen; menu()">Log ud</button></li>
     </ul>
   </nav>
 </header>

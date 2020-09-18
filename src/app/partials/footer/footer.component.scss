@@ -7,5 +7,12 @@ footer {
   justify-content: center;
   figure {
     align-self: center;
+    img {
+      @media (max-width: 1620px) {
+        width: 70%;
+        display: block;
+        margin: 0 auto;
+      }
+    }
   }
 }
