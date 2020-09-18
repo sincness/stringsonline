@@ -3,7 +3,7 @@ header.desktop {
 
     @media (max-width: 1115px) {
         display: none;
-        
+
     }
 }
 header.mobile {
@@ -40,12 +40,12 @@ header {
             figure {
                 position: absolute;
                 z-index: 5;
-                
+
                 img {
                     width: 325px;
                 }
             }
-        
+
             ul {
                 position: absolute;
                 top: 3.8rem;
@@ -67,7 +67,7 @@ header {
                         display: none;
                     }
                 }
-        
+
             }
         }
 
@@ -76,8 +76,7 @@ header {
             width: 30%;
             right: 3%;
             @media (max-width: 1550px) {
-                // width: 100%;
-                right: 10%;
+                right: 4%;
             }
 
             .contact {
@@ -101,9 +100,6 @@ header {
                 display: flex;
                 gap: 1rem;
                 margin-top: .4rem;
-                @media (max-width: 1550px) {
-                    justify-content: flex-end;
-                }
                 input {
                     border-radius: var(--br);
                     padding: .8em;
@@ -181,17 +177,17 @@ header.mobile {
         overflow-x: hidden;
         padding-top: 60px;
         transition: .5s;
-    
-    
+
+
         ul {
             display: flex;
             flex-direction: column;
             gap: 1rem;
             padding: 0 2rem;
             // align-items: center;
-    
+
             li {
-    
+
                 a {
                 white-space: nowrap;
                 padding: .25rem;
@@ -200,7 +196,7 @@ header.mobile {
                 display: block;
                 color:var(--highlight);
                 transition: color 180ms ease-in-out;
-    
+
                     &:hover {
                         color:var(--border);
                     }

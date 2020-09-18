@@ -1,10 +1,10 @@
 article {
     display: grid;
     grid-template-columns: 1fr 60% 1fr;
-    @media (max-width: 1620px ) {
+    @media (max-width: 1000px ) {
         grid-template-columns: 1fr;
     }
-    
+
     figure {
         position: relative;
         width: 100%;
@@ -12,7 +12,7 @@ article {
         background-color: #fff;
         img {
             position: absolute;
-            top: 50%; 
+            top: 50%;
             left: 50%;
             width: 80%;
             transform: translate(-50%, -50%);
@@ -25,7 +25,7 @@ article {
         padding: 1rem;
         border-top: 1px solid #292929;
         border-bottom: 1px solid #292929;
-        @media (max-width: 1620px ) {
+        @media (max-width: 1000px ) {
             border-top: none;
             border-bottom: none;
             border-right: 1px solid #292929;
@@ -51,7 +51,7 @@ article {
         border-top: 1px solid #292929;
         border-bottom: 1px solid #292929;
         border-right: 1px solid #292929;
-        @media (max-width: 1620px ) {
+        @media (max-width: 1000px ) {
             border-top: none;
             border-left: 1px solid #292929;
         }

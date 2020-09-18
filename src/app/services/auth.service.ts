@@ -19,7 +19,7 @@ export class AuthService {
   public currentUser: Observable<User>;
 
   constructor(private http: HttpClient, private cookie: CookieService) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(this.cookie.get('user')))
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(this.cookie.get('user')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -38,7 +38,6 @@ export class AuthService {
         this.cookie.set('token', user.access_token);
         this.cookie.set('user', JSON.stringify(user), 1);
         this.currentUserSubject.next(user);
-        // return user;
     }));
   }
 
