@@ -15,7 +15,7 @@ import { TakComponent } from './pages/tak/tak.component';
 import { NavigationComponent } from './partials/navigation/navigation.component';
 import { KassenComponent } from './pages/kassen/kassen.component';
 import { TermsComponent } from './pages/terms/terms.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AsideComponent } from './partials/aside/aside.component';
 import { ResultComponent } from './pages/result/result.component';
 import { CardComponent } from './partials/card/card.component';
@@ -26,6 +26,7 @@ import { BreadcrumbComponent } from './partials/breadcrumb/breadcrumb.component'
 import { ConsentComponent } from './partials/consent/consent.component';
 import { CookieDirective } from './partials/consent/cookie.directive';
 import { RatingComponent } from './partials/rating/rating.component';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,7 @@ import { RatingComponent } from './partials/rating/rating.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
