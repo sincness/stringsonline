@@ -27,6 +27,8 @@ import { ConsentComponent } from './partials/consent/consent.component';
 import { CookieDirective } from './partials/consent/cookie.directive';
 import { RatingComponent } from './partials/rating/rating.component';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,7 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]

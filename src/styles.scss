@@ -10,12 +10,11 @@
   font-family: 'Titillium Web', system-ui;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // color: #131313;
 }
 
 * {
   &::-webkit-scrollbar {
-    width: 8px;        
+    width: 8px;
 }
 
 /* Track */
@@ -38,6 +37,7 @@
 }
 }
 
+// Global Variables
 :root {
   --br: 5px;
   --dark-font: #131313;
@@ -51,17 +51,17 @@ body {
 }
 
 
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
-h6, 
-p, 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
 a,
-span, 
-button, 
-details, 
+span,
+button,
+details,
 summary,
 label {
     color: #fff;
