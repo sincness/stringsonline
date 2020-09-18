@@ -32,7 +32,8 @@ header {
             // display: inline-block;
             width: 68%;
             @media (max-width: 1620px) {
-                width: 100%;
+            // @media (max-width: 1000px) {
+                // width: 100%;
             }
             min-height: 111px;
             margin-right: 1rem;
@@ -58,7 +59,13 @@ header {
                 flex-direction: row;
                 gap: 3rem;
                 @media (max-width: 1620px) {
-                    width: 75%;
+                    width: 50%;
+                }
+
+                li:first-child {
+                    @media (max-width: 1625px) {
+                        display: none;
+                    }
                 }
         
             }
@@ -68,10 +75,9 @@ header {
             position: absolute;
             width: 30%;
             right: 3%;
-            @media (max-width: 1620px) {
-                width: 100%;
-                position: unset;
-                right: unset;
+            @media (max-width: 1550px) {
+                // width: 100%;
+                right: 10%;
             }
 
             .contact {
@@ -84,6 +90,7 @@ header {
                     align-items: center;
 
                     label {
+                        white-space: nowrap;
                         font-weight: 300;
                         padding-left: .25rem;
                     }
@@ -94,6 +101,9 @@ header {
                 display: flex;
                 gap: 1rem;
                 margin-top: .4rem;
+                @media (max-width: 1550px) {
+                    justify-content: flex-end;
+                }
                 input {
                     border-radius: var(--br);
                     padding: .8em;
@@ -101,6 +111,11 @@ header {
                     border: 1px solid var(--border);
                     background-color: var(--filler);
                     color: var(--highlight);
+
+                    @media (max-width: 1620px) {
+                        width: calc(100% - 11rem);
+
+                    }
 
                         &::placeholder {
                             color: var(--highlight);
